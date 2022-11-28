@@ -8,10 +8,18 @@ import PostFragment from '../fragments/post';
  */
 export const GET_SEARCH_RESULTS = gql`
  query GET_SEARCH_RESULTS( $first: Int, $after: String, $query: String ) {
-  posts: posts(first: $first, after: $after, where: {search: $query}) {
+  posts: products(where: {search: "cat house"}) {
     edges {
       node {
-        ...PostFragment
+        title
+        uri
+        single_product_acf {
+          asin
+          brand
+          productAida
+          productImageMainUrl
+          productUrl
+        }
       }
       cursor
     }
@@ -20,7 +28,7 @@ export const GET_SEARCH_RESULTS = gql`
       endCursor
     }
   }
- }
+}
  ${ImageFragment}
  ${PostFragment}
  `;
@@ -31,10 +39,18 @@ export const GET_SEARCH_RESULTS = gql`
  */
 export const GET_SEARCH_RESULTS_WITH_TOTAL_PAGES = gql`
  query GET_SEARCH_RESULTS( $first: Int, $after: String, $query: String ) {
-  posts: posts(first: $first, after: $after, where: {search: $query}) {
+  posts: products(where: {search: "cat house"}) {
     edges {
       node {
-        ...PostFragment
+        title
+        uri
+        single_product_acf {
+          asin
+          brand
+          productAida
+          productImageMainUrl
+          productUrl
+        }
       }
       cursor
     }

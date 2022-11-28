@@ -4,7 +4,7 @@ import { HeaderFooter } from "../get-menus";
 import SeoFragment from "../fragments/seo";
 
 export const GET_PAGE = gql`
-query GET_PAGE($uri: [String]) {
+query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 	${HeaderFooter}
 	page: productTaxonomies(where: {slug: $uri}) {
 	  nodes {
@@ -55,7 +55,7 @@ query GET_PAGE($uri: [String]) {
 			nodes {
 			  name
 			  uri
-			  products(first: 5 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
+			  products(first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
 				nodes {
 				  title
 				  uri
@@ -89,12 +89,16 @@ query GET_PAGE($uri: [String]) {
 				  }
 				 
 				}
+				pageInfo {
+					hasNextPage
+					endCursor
+				  }
 			  }
 			  children {
 				nodes {
 				  name
 				  uri
-				  products(first: 5 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
+				  products(first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
 					nodes {
 					  title
 					  uri
@@ -128,6 +132,10 @@ query GET_PAGE($uri: [String]) {
 					  }
 					 
 					}
+					pageInfo {
+						hasNextPage
+						endCursor
+					  }
 				  }
 				  children {
 					nodes {
@@ -156,6 +164,10 @@ query GET_PAGE($uri: [String]) {
 						  }
 						  
 						}
+						pageInfo {
+							hasNextPage
+							endCursor
+						  }
 					  }
 					}
 				  }
@@ -164,7 +176,11 @@ query GET_PAGE($uri: [String]) {
 			}
 		  }
 		
-		products(first: 40 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
+		  products: products(
+			first: $first
+			after: $after
+			where: { taxQuery: { taxArray: { taxonomy: PRODUCTTAXONOMY } } }
+		  ) {
 		  nodes {
 			title
 			uri
@@ -186,6 +202,10 @@ query GET_PAGE($uri: [String]) {
 				}
 			  }
 			  
+		  }
+		  pageInfo {
+			hasNextPage
+			endCursor
 		  }
 		}
 	  }

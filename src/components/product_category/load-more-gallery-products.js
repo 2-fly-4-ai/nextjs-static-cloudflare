@@ -3,29 +3,27 @@ import { useLazyQuery } from "@apollo/client";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
 
-import Posts from "../blog/posts";
 import { PER_PAGE_FIRST } from "../../utils/pagination";
-import { GET_LOAD_MORE_NEWS } from "../../queries/news/get-load-more-news";
+import { GET_LOAD_MORE_PRODUCTS } from "../../queries/categories-new/get-load-more-products";
 
-const LoadMorePosts = ({ posts, classes, graphQLQuery, searchQuery }) => {
+const LoadMorePosts = ({ products, classes, graphQLQuery, searchQuery }) => {
   /**
    * First set the posts data and pageInfo received from server side,
    * as initial postsData and pageInfo, so that
    * it sever side posts can be fetched, and the new endcursor( contained in pageInfo )
    * can be sent to get the next set of posts.
    */
-  const [postsData, setPostsData] = useState(posts?.edges ?? []);
-  const [pageInfo, setPageInfo] = useState(posts?.pageInfo);
-
+  const [postsData, setPostsData] = useState(products?.nodes ?? []);
+  const [pageInfo, setPageInfo] = useState(products?.pageInfo);
   const [error, setError] = useState(null);
 
   /**
    * If value of 'posts' passed to this component changes, set new post data and page info.
    */
   useEffect(() => {
-    setPostsData(posts?.edges);
-    setPageInfo(posts?.pageInfo);
-  }, [posts?.edges]);
+    setPostsData(products?.nodes);
+    setPageInfo(products?.pageInfo);
+  }, [products?.nodes]);
 
   /**
    * Set posts.
@@ -74,7 +72,7 @@ const LoadMorePosts = ({ posts, classes, graphQLQuery, searchQuery }) => {
    */
   const loadMoreItems = (endCursor = null) => {
     let queryVariables = {
-      first: 9, //first: PER_PAGE_FIRST,
+      first: PER_PAGE_FIRST,
       after: endCursor,
     };
 
@@ -100,9 +98,9 @@ const LoadMorePosts = ({ posts, classes, graphQLQuery, searchQuery }) => {
     <div className={classes}>
       <Posts posts={postsData} />
       {hasNextPage ? (
-        <div className="w-full flex justify-center lg:mb-10">
+        <div className="w-full flex justify-center lg:my-10">
           {loading ? (
-            <div className="flex justify-center w-full border border-white px-4 py-3">
+            <div className="flex justify-center w-full border border-white px-3 py-2 my-8">
               Loading...
             </div>
           ) : (
@@ -134,7 +132,7 @@ LoadMorePosts.propTypes = {
 LoadMorePosts.defaultProps = {
   posts: {},
   classes: "",
-  graphQLQuery: GET_LOAD_MORE_NEWS,
+  graphQLQuery: GET_LOAD_MORE_PRODUCTS,
   searchQuery: "",
 };
 
