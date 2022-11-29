@@ -74,7 +74,7 @@ const LoadMorePosts = ({ posts, classes, graphQLQuery, searchQuery }) => {
    */
   const loadMoreItems = (endCursor = null) => {
     let queryVariables = {
-      first: 9, //first: PER_PAGE_FIRST,
+      first: PER_PAGE_FIRST,
       after: endCursor,
     };
 
@@ -100,9 +100,9 @@ const LoadMorePosts = ({ posts, classes, graphQLQuery, searchQuery }) => {
     <div className={classes}>
       <Posts posts={postsData} />
       {hasNextPage ? (
-        <div className="w-full flex justify-center lg:mb-10">
+        <div className="w-full flex justify-center lg:my-10">
           {loading ? (
-            <div className="flex justify-center w-full border border-white px-4 py-3">
+            <div className="flex justify-center w-full border border-white px-3 py-2 my-8">
               Loading...
             </div>
           ) : (

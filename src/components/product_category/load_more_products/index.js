@@ -2,39 +2,32 @@ import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
+import Product from "../products";
+import { PER_PAGE_FIRST } from "../../../utils/pagination";
+import { GET_LOAD_MORE_PRODUCTS } from "../../../queries/categories-new/get-load-more-products";
 
-import { PER_PAGE_FIRST } from "../src/utils/pagination";
-import { GET_LOAD_MORE_PRODUCTS } from "../../../src/queries/categories-new/get-load-more-products";
-
-const LoadMorePosts = ({ products, uri, classes, graphQLQuery, searchQuery }) => {
-  console.warn("PRODUCTS-WARNING", products);
+const LoadMorePosts = ({ product, classes, graphQLQuery, searchQuery }) => {
+  console.log(product);
   /**
    * First set the posts data and pageInfo received from server side,
    * as initial postsData and pageInfo, so that
    * it sever side posts can be fetched, and the new endcursor( contained in pageInfo )
    * can be sent to get the next set of posts.
    */
-  const [postsData, setPostsData] = useState(products?.nodes ?? []);
-  const [pageInfo, setPageInfo] = useState(products?.pageInfo);
+  const [postsData, setPostsData] = useState(product?.nodes ?? []);
+  const [pageInfo, setPageInfo] = useState(product?.pageInfo);
   const [error, setError] = useState(null);
 
   /**
    * If value of 'posts' passed to this component changes, set new post data and page info.
    */
   useEffect(() => {
-    setPostsData(products?.nodes);
-    setPageInfo(products?.pageInfo);
-  }, [products?.nodes]);
+    setPostsData(product?.nodes);
+    setPageInfo(product?.pageInfo);
+  }, [product?.nodes]);
 
-  /**
-   * Set posts.
-   *
-   * @param {Object} posts Posts.
-   *
-   * @return {void}
-   */
-  const setPosts = (products) => {
-    if (!products || !products?.nodes || products?.pageInfo) {
+  const setPosts = (product) => {
+    if (!product || !product?.nodes || !product?.pageInfo) {
       return;
     }
 
@@ -44,9 +37,9 @@ const LoadMorePosts = ({ products, uri, classes, graphQLQuery, searchQuery }) =>
      * when user clicks on loadmore again, next set of posts can be fetched again.
      * Same process if repeated to it gets concatenated everytime to the existing posts array.
      */
-    const newPosts = postsData.concat(products?.nodes);
+    const newPosts = postsData.concat(product?.nodes);
     setPostsData(newPosts);
-    setPageInfo({ ...products?.pageInfo });
+    setPageInfo({ ...product?.pageInfo });
   };
 
   const [fetchPosts, { loading }] = useLazyQuery(graphQLQuery, {
@@ -56,7 +49,7 @@ const LoadMorePosts = ({ products, uri, classes, graphQLQuery, searchQuery }) =>
        * Call setPosts to concat the new set of posts to existing one and update pageInfo
        * that contains the cursor and the information about whether we have the next page.
        */
-      setPosts(data?.products ?? []);
+      setPosts(data?.page?.nodes[0]?.products ?? []);
     },
     onError: (error) => {
       setError(error?.graphQLErrors ?? "");
@@ -71,11 +64,11 @@ const LoadMorePosts = ({ products, uri, classes, graphQLQuery, searchQuery }) =>
    *
    * @param {String} endCursor Endcursor used to fetch the next set of posts.
    */
-  const loadMoreItems = (endCursor = null) => {
+  const loadMoreItems = (product, endCursor) => {
     let queryVariables = {
-      first: PER_PAGE_FIRST,
+      first: PER_PAGE_FIRST, //first: PER_PAGE_FIRST,
       after: endCursor,
-      uri:,
+      uri: product?.uri,
     };
 
     // If its a search query then add the query in the query variables.
@@ -96,13 +89,16 @@ const LoadMorePosts = ({ products, uri, classes, graphQLQuery, searchQuery }) =>
    */
   const { endCursor, hasNextPage } = pageInfo || {};
 
+  console.warn(endCursor);
+
   return (
     <div className={classes}>
-      <Posts posts={postsData} />
+      <Product data={postsData} />
+
       {hasNextPage ? (
-        <div className="w-full flex justify-center lg:my-10">
+        <div className="w-full flex justify-center lg:mb-10">
           {loading ? (
-            <div className="flex justify-center w-full border border-white px-3 py-2 my-8">
+            <div className="flex justify-center w-full border border-white px-4 py-3">
               Loading...
             </div>
           ) : (
@@ -125,14 +121,14 @@ const LoadMorePosts = ({ products, uri, classes, graphQLQuery, searchQuery }) =>
 };
 
 LoadMorePosts.propTypes = {
-  posts: PropTypes.object,
+  product: PropTypes.object,
   classes: PropTypes.string,
   graphQLQuery: PropTypes.object,
   searchQuery: PropTypes.string,
 };
 
 LoadMorePosts.defaultProps = {
-  posts: {},
+  product: {},
   classes: "",
   graphQLQuery: GET_LOAD_MORE_PRODUCTS,
   searchQuery: "",

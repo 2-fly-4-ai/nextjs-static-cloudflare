@@ -1,14 +1,28 @@
 import { isEmpty, isArray } from "lodash";
-import Post from "../../blog/post";
 import PropTypes from "prop-types";
+import { useState } from "react";
+import Image from "next/image";
+import { sanitize } from "../../../../src/utils/miscellaneous";
 
 //No fucking idea how you deal with modals and what not with components
 // Also ask how to actually work with components and Console.warn() them as you are building them.
 
-const Products = ({ products }) => {
-  if (isEmpty(products) && !isArray(products)) {
-    return null;
+const Products = ({ product }) => {
+  console.warn("TESTING", product);
+  const [isMenuVisible, setMenuVisibility] = useState(false);
+
+  const [activeId, setActiveId] = useState();
+  // const [open, setOpen] = React.useState(false);
+  function activeCategory(id) {
+    setActiveId(id);
   }
+  function isActive(id) {
+    return id === activeId;
+  }
+
+  // if (isEmpty(products) && !isArray(products)) {
+  //   return null;
+  // }
 
   return (
     <section className="bg-white dark:bg-gray-900 max-w-screen-2xl mx-auto px-6 ">
@@ -16,9 +30,12 @@ const Products = ({ products }) => {
         <div className="grid gap-3  sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5">
           {/* INDIVIDUAL PRODUCTS. Includes code for quickview MODAL. 
                 FEATURE REQUEST: NO SCROLL WHEN CLICKING ON MODAL*/}
-          {product_list.map((product, index) => {
+          {product?.nodes?.map((product, index) => {
             return (
-              <div className="p-0 pb-3 h-68 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700">
+              <div
+                key={product?.title}
+                className="p-0 pb-3 h-68 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700"
+              >
                 <div className="flex flex-col relative bg-white">
                   <Image
                     src={product?.single_product_acf?.productImageMainUrl}
@@ -153,12 +170,12 @@ const Products = ({ products }) => {
   );
 };
 
-Posts.propTypes = {
-  posts: PropTypes.array,
+Products.propTypes = {
+  products: PropTypes.array,
 };
 
-Posts.defaultProps = {
+Products.defaultProps = {
   posts: [],
 };
 
-export default Posts;
+export default Products;
