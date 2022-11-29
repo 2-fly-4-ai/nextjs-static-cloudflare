@@ -15,8 +15,8 @@ import React from "react";
 import { useState } from "react";
 import Image from "next/image";
 
-const Page = ({ data }) => {
-  console.warn(data);
+const Page = ({ data, query }) => {
+  console.warn(query); 
   const router = useRouter();
   const [isMenuVisible, setMenuVisibility] = useState(false);
 
@@ -471,16 +471,17 @@ const Page = ({ data }) => {
 
 export default Page;
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
+  const page = params.page;
   const { data, errors } = await client.query({
     query: GET_PAGE,
     variables: {
       uri: params?.slug.join("/"),
-      first: 40, //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
+      first: (page * 5), //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
       after: null,
     },
   });
-  console.warn("XXXXXXXXXXXXXXXXXXXXX", params?.slug.join("/"));
+  // console.warn("XXXXXXXXXXXXXXXXXXXXX", params?.slug.join("/"));
 
   const defaultProps = {
     props: {

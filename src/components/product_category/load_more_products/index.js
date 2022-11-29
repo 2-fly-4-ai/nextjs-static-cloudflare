@@ -6,8 +6,8 @@ import Product from "../products";
 import { PER_PAGE_FIRST } from "../../../utils/pagination";
 import { GET_LOAD_MORE_PRODUCTS } from "../../../queries/categories-new/get-load-more-products";
 
-const LoadMorePosts = ({ product, classes, graphQLQuery, searchQuery }) => {
-  console.log(product);
+const LoadMorePosts = ({ product, classes, graphQLQuery, searchQuery, slug }) => {
+  console.log(product, slug);
   /**
    * First set the posts data and pageInfo received from server side,
    * as initial postsData and pageInfo, so that
@@ -49,7 +49,7 @@ const LoadMorePosts = ({ product, classes, graphQLQuery, searchQuery }) => {
        * Call setPosts to concat the new set of posts to existing one and update pageInfo
        * that contains the cursor and the information about whether we have the next page.
        */
-      setPosts(data?.page?.nodes[0]?.products ?? []);
+      setPosts(data?.page?.nodes?.filter(node => node.slug === slug)[0].products ?? []);
     },
     onError: (error) => {
       setError(error?.graphQLErrors ?? "");
@@ -89,11 +89,11 @@ const LoadMorePosts = ({ product, classes, graphQLQuery, searchQuery }) => {
    */
   const { endCursor, hasNextPage } = pageInfo || {};
 
-  console.warn(endCursor);
+  const p = {nodes: postsData};
 
   return (
     <div className={classes}>
-      <Product data={postsData} />
+      <Product product={ p } />
 
       {hasNextPage ? (
         <div className="w-full flex justify-center lg:mb-10">

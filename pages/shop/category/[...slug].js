@@ -23,9 +23,9 @@ const Page = ({ data }) => {
 
   return (
     <Layout data={data}>
-      {/* <Products product={data?.page?.nodes[0]?.products} /> */}
+      <Products product={data?.page?.nodes[0]?.products} /> 
 
-      <LoadMoreProducts product={data?.page?.nodes[0]?.products} />
+      <LoadMoreProducts product={data?.page?.nodes[0]?.products} graphQLQuery={GET_PAGE} slug={data?.page?.nodes[0]?.slug} />
       {/* This is a simplified version and doesn't take the children into account i was just trying to get the pagination to work */}
 
       {/* If you comment out LoadMoreProducts And show just <Products/> that component seems to work */}
@@ -41,7 +41,7 @@ export async function getStaticProps({ params }) {
     query: GET_PAGE,
     variables: {
       uri: params?.slug.join("/"),
-      first: 10, //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
+      first: 4, //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
       after: null,
     },
   });

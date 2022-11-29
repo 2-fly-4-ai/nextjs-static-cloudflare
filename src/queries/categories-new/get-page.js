@@ -55,7 +55,9 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 			nodes {
 			  name
 			  uri
-			  products(first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
+			  products(
+				after: $after 
+				first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
 				nodes {
 				  title
 				  uri
@@ -98,7 +100,9 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 				nodes {
 				  name
 				  uri
-				  products(first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
+				  products(
+					after: $after 
+					first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
 					nodes {
 					  title
 					  uri
@@ -122,7 +126,7 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 						  modelNumber
 						  keywordTerm
 						  fieldGroupName
-						  productUrl
+							  productUrl
 					   }
 					   productTags {
 						nodes {
@@ -141,7 +145,10 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 					nodes {
 					  name
 					  uri
-					  products(first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
+					  products(
+						first: 10
+						after: $after 
+						where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
 						nodes {
 						  title
 						  uri
