@@ -1,12 +1,14 @@
+import React from "react";
+
 import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
-import Products from "../products";
 import { PER_PAGE_FIRST } from "../../../utils/pagination";
-import { GET_PAGE } from "../../../queries/categories-new/get-load-more-products";
+import { GET_PAGE } from "../../../queries/tags/get-more-products";
+import TagProducts from "../tag_products";
 
-const LoadMorePosts = ({
+const LoadMoreTagProducts = ({
   product,
   classes,
   graphQLQuery,
@@ -47,6 +49,7 @@ const LoadMorePosts = ({
   const [fetchPosts, { loading }] = useLazyQuery(graphQLQuery, {
     notifyOnNetworkStatusChange: true,
     onCompleted: (data) => {
+      console.log("HELLO", data?.page?.nodes[0].products);
       /**
        * Call setPosts to concat the new set of posts to existing one and update pageInfo
        * that contains the cursor and the information about whether we have the next page.
@@ -66,6 +69,9 @@ const LoadMorePosts = ({
    * @param {String} endCursor Endcursor used to fetch the next set of posts.
    */
   const loadMoreItems = (slug, endCursor = null) => {
+    console.log(endCursor);
+    console.log(slug);
+
     let queryVariables = {
       first: PER_PAGE_FIRST, //first: PER_PAGE_FIRST,
       after: endCursor,
@@ -87,15 +93,16 @@ const LoadMorePosts = ({
    * Please note that pageInfo gets updated with new endCursor and hasNextPage
    * values everytime a new client side request is made using setPageInfo()
    */
+  console.log(postsData);
   const { endCursor, hasNextPage } = pageInfo || {};
-  const test = true;
   const p = { nodes: postsData };
+  const test2 = true;
 
   return (
     <div className={classes}>
-      <Products product={p} />
+      <TagProducts product={p} />
 
-      {hasNextPage ? (
+      {test2 ? (
         <div className="w-full flex justify-center lg:mb-10">
           {loading ? (
             <div>
@@ -142,18 +149,18 @@ const LoadMorePosts = ({
     </div>
   );
 };
-LoadMorePosts.propTypes = {
+LoadMoreTagProducts.propTypes = {
   products: PropTypes.object,
   classes: PropTypes.string,
   graphQLQuery: PropTypes.object,
   searchQuery: PropTypes.string,
 };
 
-LoadMorePosts.defaultProps = {
+LoadMoreTagProducts.defaultProps = {
   products: {},
   classes: "",
   graphQLQuery: GET_PAGE,
   searchQuery: "",
 };
 
-export default LoadMorePosts;
+export default LoadMoreTagProducts;

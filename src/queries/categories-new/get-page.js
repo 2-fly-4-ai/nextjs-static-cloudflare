@@ -217,16 +217,23 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 		}
 	  }
 	}
-	productBrands(where: {orderby: COUNT}, last: 100) {
+	productBrands(
+		where: { orderby: COUNT, order: DESC }
+		first: 150
+		
+	  ) {
 		nodes {
 		  name
 		  uri
 		  seo {
-		
 			metaRobotsNoindex
-			
 		  }
-		}}
+		}
+		pageInfo {
+		  hasNextPage
+		  endCursor
+		}
+	  }
   }
 ${MenuFragment}
 

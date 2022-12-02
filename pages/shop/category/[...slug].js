@@ -15,24 +15,80 @@ import React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import LoadMoreProducts from "../../../src/components/product_category/load_more_products";
+import LoadMoreBrands from "../../../src/components/product_category/brand/load-more-brands";
 import Products from "../../../src/components/product_category/products";
 import { PER_PAGE_FIRST } from "../../../src/utils/pagination";
+import Subcategory from "../../../src/components/product_category/subcategory";
+import SubcategoryReadmore from "../../../src/components/product_category/subcategory_readmore";
+import Brands from "../../../src/components/product_category/brand";
+import Tags from "../../../src/components/product_category/tags";
+import ChildrenProducts from "../../../src/components/product_category/products/get-children-products";
+import ChildTags from "../../../src/components/product_category/children-tags";
+import Hero from "../../../src/components/product_category/hero";
 
 const Page = ({ data }) => {
   //Router FallBack Loading
 
   return (
     <Layout data={data}>
-      <Products product={data?.page?.nodes[0]?.products} /> 
-
-      <LoadMoreProducts product={data?.page?.nodes[0]?.products} graphQLQuery={GET_PAGE} slug={data?.page?.nodes[0]?.slug} />
-      {/* This is a simplified version and doesn't take the children into account i was just trying to get the pagination to work */}
-
-      {/* If you comment out LoadMoreProducts And show just <Products/> that component seems to work */}
-      {/* If you cange name of dep1 to [slug].js that is the original layout i had in mind */}
+      <section className="bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-screen-2xl text-center  lg:px-0 flex flex-col-reverse lg:flex-row ">
+          {/* Left column - Contiains Brand/Product tags Component*/}
+          <div className="lg:flex-col lg:flex border-r  lg:max-w-xs px-8 2xl:px-0 xl:max-w-xs 2xl:max-w-sm my-5 ">
+            {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+              <Subcategory data={data} />
+            ) : null}
+            {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+              <ChildTags data={data} />
+            ) : (
+              <Tags data={data} />
+            )}
+            <Brands data={data?.productBrands?.nodes} />
+          </div>
+          {/* Whole Right Section- Hero & Product Gallery*/}
+          <div className="flex-1 flex-col px-3">
+            {/* Right-Top Hero Section */}
+            <Hero data={data} />
+            {/* Product Grid */}
+            <div className="flex-1 pb-6">
+              {/* Number 1 */}
+              {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+                <ChildrenProducts data={data} />
+              ) : (
+                <LoadMoreProducts
+                  product={data?.page?.nodes[0]?.products}
+                  slug={data?.page?.nodes[0]?.slug}
+                />
+              )}
+              {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+                <SubcategoryReadmore data={data} />
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };
+
+// {/* <Tags data={data} />
+//       <ChildTags data={data} />
+//       <Brands data={data?.productBrands?.nodes} />
+//       <LoadMoreBrands brands={data?.productBrands} />
+//       {/* <Products product={data?.page?.nodes[0]?.products} /> */}
+//       <ChildrenProducts data={data} />
+//       <Subcategory data={data} />
+//       <LoadMoreProducts
+//         product={data?.page?.nodes[0]?.products}
+//         slug={data?.page?.nodes[0]?.slug}
+//       />
+//       {/* <LoadMoreProductsChildren
+//         product={data}
+//         slug={data?.page?.nodes[0]?.slug}
+//       /> */}
+//       {/* This is a simplified version and doesn't take the children into account i was just trying to get the pagination to work */}
+//       {/* If you comment out LoadMoreProducts And show just <Products/> that component seems to work */}
+//       If you cange name of dep1 to [slug].js that is the original layout i had in mind */}
 
 export default Page;
 
@@ -41,11 +97,10 @@ export async function getStaticProps({ params }) {
     query: GET_PAGE,
     variables: {
       uri: params?.slug.join("/"),
-      first: 4, //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
+      first: PER_PAGE_FIRST, //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
       after: null,
     },
   });
-  console.warn("XXXXXXXXXXXXXXXXXXXXX", params?.slug.join("/"));
 
   const defaultProps = {
     props: {
@@ -96,7 +151,7 @@ export async function getStaticPaths() {
         pathsData.push({ params: { slug: slugs } });
       }
     });
-  console.warn("TEST", pathsData);
+
   return {
     paths: pathsData,
     fallback: FALLBACK,

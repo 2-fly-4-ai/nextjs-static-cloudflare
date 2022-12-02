@@ -27,7 +27,6 @@ import Share from "../../src/components/product_tags/share";
 import ReadMore from "../../src/components/product_tags/read-next";
 import SideBar from "../../src/components/product_tags/sidebar";
 import NewsLetter from "../../src/components/product_tags/newsletter";
-import LoadMoreTagProducts from "../../src/components/product_tags/load-more-tag-products";
 
 const Page = ({ data }) => {
   const router = useRouter();
@@ -43,17 +42,13 @@ const Page = ({ data }) => {
 
   return (
     <Layout data={data}>
-      <main className="pb-8 lg:pb-16 bg-white lg:max-w-screen-lg xl:max-w-screen-2xl justify-center items-center dark:bg-gray-900 px-4 m-auto">
-        <div className="flex flex-col lg:flex-row relative z-20 justify-between px-0 md:px-4 mx-auto max-w-screen-xl  bg-white dark:bg-gray-900 rounded">
+      <main className="pb-8 lg:pb-16 bg-white lg:max-w-screen-lg xl:max-w-screen-2xl  justify-center items-center dark:bg-gray-900 px-4 m-auto">
+        <div className="flex relative z-20 justify-between px-4 mx-auto max-w-screen-xl  bg-white dark:bg-gray-900 rounded">
           <article className=" xl:w-[1000px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <ProductTagsHeader data={data} />
             <AuthorTitleShare data={data} />
             <IntroFeaturedImage data={data} />
-            {/* <TagProducts data={data} /> */}
-            <LoadMoreTagProducts
-              product={data?.page?.nodes[0]?.products}
-              slug={data?.page?.nodes[0]?.slug}
-            />
+            <TagProducts data={data} />
             <ContentAccordion data={data} />
             <Share data={data} />
           </article>

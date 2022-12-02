@@ -5,7 +5,7 @@ import SeoFragment from "../fragments/seo";
 
 export const GET_PAGE = gql`
   query GET_PAGE($uri: [String], $first: Int!, $after: String) {
-    page: productTaxonomies(where: { slug: $uri }) {
+    page: productTags(where: { slug: $uri }) {
       nodes {
         name
         slug
@@ -24,7 +24,7 @@ export const GET_PAGE = gql`
         products: products(
           first: $first
           after: $after
-          where: { taxQuery: { taxArray: { taxonomy: PRODUCTTAXONOMY } } }
+          where: { taxQuery: { taxArray: { taxonomy: PRODUCTTAG } } }
         ) {
           nodes {
             title
@@ -33,6 +33,7 @@ export const GET_PAGE = gql`
               asin
               brand
               productAida
+              productDescription
               productImageMainUrl
               upc
               modelNumber
@@ -55,4 +56,23 @@ export const GET_PAGE = gql`
       }
     }
   }
+`;
+
+export const GET_PAGE_BY_ID = gql`
+	query GET_PAGE_BY_ID($id: ID!) {
+		${HeaderFooter}
+	  page(idType: DATABASE_ID, id: $id) {
+	    id
+	    title
+	    content
+	    slug
+	    uri
+	    seo {
+          ...SeoFragment
+        }
+		status
+	  }
+	}
+	${MenuFragment}
+	${SeoFragment}
 `;

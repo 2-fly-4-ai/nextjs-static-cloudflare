@@ -22,7 +22,7 @@ query GET_PAGE($uri: [String]) {
 			url
 		  }
 		}
-		products(first: 30, where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAG}}}) {
+		products: products(first: 10, where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAG}}}) {
 		  nodes {
 			title
 			uri
@@ -93,6 +93,10 @@ query GET_PAGE($uri: [String]) {
 			  }
 			}
 		  }
+		  pageInfo {
+			hasNextPage
+			endCursor
+		  }
 		}
 		roundupFields {
 		  hero
@@ -105,10 +109,6 @@ query GET_PAGE($uri: [String]) {
 		  roundupFeatureImage
 		  datepublished
 		}
-	  }
-	  pageInfo {
-		hasNextPage
-		endCursor
 	  }
 	}
   }

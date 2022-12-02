@@ -12,11 +12,13 @@ import {
 import { sanitize } from "../../../src/utils/miscellaneous";
 import Link from "next/link";
 import React from "react";
+import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 import Image from "next/image";
+import { Carousel } from "flowbite-react";
 
-const Page = ({ data, query }) => {
-  console.warn(query); 
+const Page = ({ data }) => {
+  console.warn(data);
   const router = useRouter();
   const [isMenuVisible, setMenuVisibility] = useState(false);
 
@@ -35,8 +37,8 @@ const Page = ({ data, query }) => {
   let page_brands = [];
   let product_list = [];
 
-  //REQUESTED_FEATURES = SHOULD ADD MORE TAGS AS I LOAD MORE PRODUCTS
   // Product Tags - For display purposes
+
   data?.page?.nodes[0]?.products?.nodes.map((product) => {
     product?.productTags?.nodes.map((product) => {
       let x = product?.name;
@@ -48,7 +50,6 @@ const Page = ({ data, query }) => {
       page_tags.push(product);
     });
 
-    //REQUESTED_FEATURES = LOAD MORE BUTTON ON BRANDS
     // Brand Tags- For display & Search Volume logic
     // Kill all page creation for brand tags under 200SV
     product?.productBrands?.nodes.map((product) => {
@@ -71,9 +72,8 @@ const Page = ({ data, query }) => {
     // Push Products to Product List- Use this List to Append more
     product_list.push(product);
   });
+  //Child Component For Finding Products in Child Categories TO display in Pa FIx this KAK poes Ugly Code
 
-  ////REQUESTED_FEATURES = LOAD MORE BUTTON SHOULD ALSO CONSIDER THESE. FOR PARENT PAGES THIS IS WHERE THE PRODUCTS ARE ACCESSED FROM AND THE LOADMORE NEEDS TO TAKE THAT INTO ACCOUNT.
-  //Child Component For Finding Products in Child Categories
   function readChildren(child) {
     {
       !isEmpty(child?.children?.nodes)
@@ -91,6 +91,14 @@ const Page = ({ data, query }) => {
               }
               page_tags.push(product);
             });
+
+            // Brand Tags- For display & Search Volume logic
+            // Kill all page creation for brand tags under 200SV
+
+            // if ((search_volume < 200) || (search_volume == null)) {
+            // 	return;
+
+            // 	// Add logic for 404 Here on the Brand template(Reference Outer Scope)
           });
     }
   }
@@ -112,7 +120,7 @@ const Page = ({ data, query }) => {
             page_tags.push(product);
           });
 
-          // Brand Tags- For display & Search Volume logic need to covert to a loadMore Brands Component
+          // Brand Tags- For display & Search Volume logic
           // Kill all page creation for brand tags under 200SV
           product?.productBrands?.nodes.map((product) => {
             let search_volume = product?.brand_fields?.searchVolume;
@@ -133,14 +141,13 @@ const Page = ({ data, query }) => {
         });
   }
 
-  //REMOVAL OF DUPLICATE TAGS/BRANDS/PRODUCTS. SINCE using Recursive Function seem to have duplicate products appearing.
+  //Removes Duplicate Tags
   page_tags = page_tags
     .filter(
       (v, i, a) =>
         a.findIndex((t) => JSON.stringify(t) === JSON.stringify(v)) === i
     )
     .sort();
-
   page_brands = page_brands
     .filter(
       (v, i, a) =>
@@ -148,8 +155,6 @@ const Page = ({ data, query }) => {
     )
     .sort()
     .reverse();
-
-  //THE RECURSIVE FUNCTION SEEMS TO CREATE DUPLICATES
   product_list = product_list.filter(
     (v, i, a) =>
       a.findIndex((t) => JSON.stringify(t) === JSON.stringify(v)) === i
@@ -166,9 +171,8 @@ const Page = ({ data, query }) => {
     <Layout data={data}>
       <section className="bg-white dark:bg-gray-900">
         <div className="py-8 px-4 mx-auto max-w-screen-2xl text-center lg:py-0 lg:px-5 flex ">
-          {/* LEFT COLUMN Section - Contiains Sub Categories Brand/Product tags Component */}
-
-          <div className="hidden md:flex w-80 mb-5 flex-col border-r">
+          {/* Left column - Contiains Brand/Product tags Component*/}
+          <div className="sm:hidden lg:flex w-80 mb-5 flex-col border-r">
             {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
               <div className="space-x-2 mt-2 flex flex-col">
                 <span className="text-gray-800 mx-2 my-4 text-left font-semibold">
@@ -248,11 +252,11 @@ const Page = ({ data, query }) => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN Section- Hero+ Breadcrumb & Product Gallery*/}
+          {/* Whole Right Section- Hero & Product Gallery*/}
           <div className="flex-1 flex-col px-3">
             {/* Right-Top Hero Section */}
             <div className="flex flex-col items-start rounded-lg my-5">
-              <h1 className="my-5">
+              <h1>
                 <a
                   className="m-5 text-gray-600 text-5xl px-2  py-2 pb-1.5"
                   href={data?.page?.nodes[0]?.name}
@@ -260,8 +264,8 @@ const Page = ({ data, query }) => {
                   {data?.page?.nodes[0]?.name}
                 </a>
               </h1>
-              {/* BREADCRUMB */}
-              <div className="flex w-full flex-col md:flex-row text-gray-600 font-medium m:m-5  sm:m-0 gap-2 my-5">
+              {/* <p className="text-gray-400 p-1 ml-1 text-lg font-medium">RESULTS</p> */}
+              <p className="text-gray-600 font-medium m-5">
                 {!isEmpty(
                   data?.page?.nodes[0]?.parent?.node?.parent?.node?.parent?.node
                     ?.name
@@ -305,16 +309,15 @@ const Page = ({ data, query }) => {
                     {data?.page?.nodes[0]?.name}
                   </a>
                 ) : null}
-              </div>
+              </p>
             </div>
 
-            {/* PRODUCT GRID OUTTER DIV */}
+            {/* Product Grid */}
             <div className="flex-1 pb-6">
-              {/* PRODUCT GRID DIV */}
               <div className="grid gap-3  sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5">
-                {/* INDIVIDUAL PRODUCTS. Includes code for quickview MODAL. 
-                FEATURE REQUEST: NO SCROLL WHEN CLICKING ON MODAL*/}
+                {/* Number 1 */}
                 {product_list.map((product, index) => {
+                  // if (index < 3) {
                   return (
                     <div className="p-0 pb-3 h-68 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700">
                       <div className="flex flex-col relative bg-white">
@@ -324,7 +327,7 @@ const Page = ({ data, query }) => {
                           width="256"
                           objectFit="contain"
                         />
-                        <div className="hidden md:flex bg-opacity-0 hover:bg-opacity-20 group bg-black w-full h-full absolute duration-500">
+                        <div className="bg-opacity-0 hover:bg-opacity-20 group bg-black w-full h-full absolute duration-500">
                           <a
                             className="py-1 px-5 opacity-0 hover:bg-gray-300 border-gray-300 border-2 leading-tight font-semibold group-hover:opacity-80 text-black text-sm -mt-8 rounded-full p-1 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white"
                             href={product?.single_product_acf?.productUrl}
@@ -354,7 +357,7 @@ const Page = ({ data, query }) => {
                       {/* modal */}
                       <div
                         id="readProductModal"
-                        tabIndex="-1"
+                        tabindex="-1"
                         aria-hidden="true"
                         className={`${
                           isMenuVisible && index == activeId ? "flex" : "hidden"
@@ -385,10 +388,9 @@ const Page = ({ data, query }) => {
                                       setMenuVisibility(!isMenuVisible);
                                       activeCategory(index);
                                     }}
-                                    className={`${
-                                      isActive(index) ? "..." : ""
-                                    } text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white`}
+                                    className={isActive(index) ? "..." : ""}
                                     type="button"
+                                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white"
                                     data-modal-toggle="readProductModal"
                                   >
                                     <svg
@@ -401,7 +403,7 @@ const Page = ({ data, query }) => {
                                       <path
                                         fill-rule="evenodd"
                                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
+                                        clip-rule="evenodd"
                                       ></path>
                                     </svg>
                                   </button>
@@ -450,17 +452,6 @@ const Page = ({ data, query }) => {
                   );
                 })}
               </div>
-
-              {/* Load More Products Button */}
-              <div className="my-4">
-                <a
-                  className="text-sm text-gray-600 border-2 font-bold border-gray-500 rounded-full px-4 py-1 pb-1.5 hover:bg-gray-200"
-                  href=""
-                >
-                  Load More Products{" "}
-                  <span className="font-extrabold ">{">"}</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -471,17 +462,16 @@ const Page = ({ data, query }) => {
 
 export default Page;
 
-export async function getServerSideProps({ params }) {
-  const page = params.page;
+export async function getStaticProps({ params }) {
   const { data, errors } = await client.query({
     query: GET_PAGE,
     variables: {
       uri: params?.slug.join("/"),
-      first: (page * 5), //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
+      first: 10,
       after: null,
     },
   });
-  // console.warn("XXXXXXXXXXXXXXXXXXXXX", params?.slug.join("/"));
+  console.warn("XXXXXXXXXXXXXXXXXXXXX", params?.slug.join("/"));
 
   const defaultProps = {
     props: {
@@ -511,9 +501,6 @@ export async function getServerSideProps({ params }) {
  * data is already present, unlike getInitialProps which gets the page at build time but makes an api
  * call after page is served on the browser.
  *
- * 
- //Not 100% sure how this works but for catch all routes + ISR it uses the fallback. Hence query always set to last:1 and doesn't actually fetch all paths because that is a bottleneck when working with thousands of posts and not the right way to do it. 
-
  * @see https://nextjs.org/docs/basic-features/data-fetching#the-paths-key-required
  *
  * @returns {Promise<{paths: [], fallback: boolean}>}
@@ -532,7 +519,6 @@ export async function getStaticPaths() {
         pathsData.push({ params: { slug: slugs } });
       }
     });
-  console.warn("TEST", pathsData);
   return {
     paths: pathsData,
     fallback: FALLBACK,

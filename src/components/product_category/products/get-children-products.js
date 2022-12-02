@@ -7,8 +7,7 @@ import { sanitize } from "../../../../src/utils/miscellaneous";
 //No fucking idea how you deal with modals and what not with components
 // Also ask how to actually work with components and Console.warn() them as you are building them.
 
-const Products = ({ product }) => {
-  console.warn("TESTING", product);
+const Products = ({ data }) => {
   const [isMenuVisible, setMenuVisibility] = useState(false);
 
   const [activeId, setActiveId] = useState();
@@ -20,17 +19,65 @@ const Products = ({ product }) => {
     return id === activeId;
   }
 
+  let product_list = [];
+
+  // Product Tags - For display purposes
+
+  data?.page?.nodes[0]?.products?.nodes.map((product) => {
+    // Push Products to Product List- Use this List to Append more
+    product_list.push(product);
+  });
+  //Child Component For Finding Products in Child Categories TO display in Pa FIx this KAK poes Ugly Code
+
+  function readChildren(child) {
+    {
+      !isEmpty(child?.children?.nodes)
+        ? child?.children?.nodes.map((child) => {
+            readChildren(child);
+          })
+        : child?.products?.nodes.map((product) => {
+            product_list.push(product);
+            // Brand Tags- For display & Search Volume logic
+            // Kill all page creation for brand tags under 200SV
+
+            // if ((search_volume < 200) || (search_volume == null)) {
+            // 	return;
+
+            // 	// Add logic for 404 Here on the Brand template(Reference Outer Scope)
+          });
+    }
+  }
+
+  {
+    !isEmpty(data?.page?.nodes[0]?.children?.nodes)
+      ? data?.page?.nodes[0]?.children?.nodes.map((child) => {
+          readChildren(child);
+        })
+      : data?.page?.nodes[0]?.products?.nodes.map((product) => {
+          product_list.push(product);
+        });
+  }
+
+  //Removes Duplicate Tags
+
+  product_list = product_list.filter(
+    (v, i, a) =>
+      a.findIndex((t) => JSON.stringify(t) === JSON.stringify(v)) === i
+  );
+
+  ///// End Brand/Product Tags component /////
+
   // if (isEmpty(products) && !isArray(products)) {
   //   return null;
   // }
 
   return (
     <section className="bg-white dark:bg-gray-900 max-w-screen-2xl mx-auto px-6 ">
-      <div className="py-4 px-0  mx-auto max-w-screen-2xl sm:py-8 lg:px-0">
+      <div className="py-4 px-0  mx-auto max-w-screen-2xl sm:py-16 lg:px-0">
         <div className="grid gap-3  sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5">
           {/* INDIVIDUAL PRODUCTS. Includes code for quickview MODAL. 
                 FEATURE REQUEST: NO SCROLL WHEN CLICKING ON MODAL*/}
-          {product?.nodes?.map((product, index) => {
+          {product_list.map((product, index) => {
             return (
               <div
                 key={product?.title}

@@ -16,6 +16,25 @@ export const GET_PAGE = gql`
           ...SeoFragment
         }
 	  }
+	  productTags(first: 15, where: {orderby: COUNT , order: DESC}) {
+		nodes {
+		  roundupFields {
+			hero
+		  }
+		  uri
+		  name
+		  count
+		}
+	  }
+	  productTaxonomies(first: 6, where: {orderby: COUNT, childless: true}) {
+		nodes {
+		  uri
+		  name
+		  product_taxonomy_fields {
+			taxonomyFeaturedImage
+		  }
+		}
+	  }
 	}
 	${MenuFragment}
 	${SeoFragment}
