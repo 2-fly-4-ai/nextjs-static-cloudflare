@@ -12,9 +12,26 @@ export const GET_PAGE = gql`
 	    content
 	    slug
 	    uri
-	    seo {
-          ...SeoFragment
-        }
+		seo {
+			openGraph {
+			  description
+			  siteName
+			  title
+			  url
+			  
+			}
+			breadcrumbTitle
+			description
+			focusKeywords
+			breadcrumbs {
+			  text
+			  url
+			}
+			canonicalUrl
+			robots
+			title
+		  }
+
 	  }
 	  productTags(first: 15, where: {orderby: COUNT , order: DESC}) {
 		nodes {
@@ -30,14 +47,18 @@ export const GET_PAGE = gql`
 		nodes {
 		  uri
 		  name
-		  product_taxonomy_fields {
-			taxonomyFeaturedImage
+		  products(first: 1) {
+			nodes {
+			  single_product_acf {
+				productImageMainUrl
+			  }
+			}
 		  }
 		}
 	  }
 	}
 	${MenuFragment}
-	${SeoFragment}
+	
 `;
 
 export const GET_PAGE_BY_ID = gql`
@@ -49,12 +70,9 @@ export const GET_PAGE_BY_ID = gql`
 	    content
 	    slug
 	    uri
-	    seo {
-          ...SeoFragment
-        }
 		status
 	  }
 	}
 	${MenuFragment}
-	${SeoFragment}
+	
 `;

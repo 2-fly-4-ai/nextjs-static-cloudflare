@@ -15,6 +15,7 @@ const LoadMoreTagProducts = ({
   searchQuery,
   slug,
 }) => {
+  console.log(product);
   /**
    * First set the posts data and pageInfo received from server side,
    * as initial postsData and pageInfo, so that
@@ -49,12 +50,11 @@ const LoadMoreTagProducts = ({
   const [fetchPosts, { loading }] = useLazyQuery(graphQLQuery, {
     notifyOnNetworkStatusChange: true,
     onCompleted: (data) => {
-      console.log("HELLO", data?.page?.nodes[0].products);
       /**
        * Call setPosts to concat the new set of posts to existing one and update pageInfo
        * that contains the cursor and the information about whether we have the next page.
        */
-      setPosts(data?.page?.nodes[0].products ?? []);
+      setPosts(data?.page?.products ?? []);
     },
     onError: (error) => {
       setError(error?.graphQLErrors ?? "");
@@ -109,12 +109,11 @@ const LoadMoreTagProducts = ({
               <button
                 disabled
                 type="button"
-                class="py-2.5 px-5 uppercase mr-2 text-sm font-medium text-gray-900 bg-white rounded-full border-4 border-gray-200 hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center"
+                className="py-2.5 px-5 uppercase mr-2 text-sm font-medium text-gray-900 bg-white rounded-full border-4 border-gray-200 hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center"
               >
                 <svg
-                  aria-hidden="true"
                   role="status"
-                  class="inline mr-2 w-4 h-4 text-gray-200 animate-spin dark:text-gray-600"
+                  className="inline mr-2 w-4 h-4 text-gray-200 animate-spin dark:text-gray-600"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

@@ -35,10 +35,10 @@ const Page = ({ data }) => {
         <div className="mx-auto max-w-screen-2xl text-center  lg:px-0 flex flex-col-reverse lg:flex-row ">
           {/* Left column - Contiains Brand/Product tags Component*/}
           <div className="lg:flex-col lg:flex border-r  lg:max-w-xs px-8 2xl:px-0 xl:max-w-xs 2xl:max-w-sm my-5 ">
-            {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+            {!isEmpty(data?.page?.children?.nodes) ? (
               <Subcategory data={data} />
             ) : null}
-            {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+            {!isEmpty(data?.page?.children?.nodes) ? (
               <ChildTags data={data} />
             ) : (
               <Tags data={data} />
@@ -52,15 +52,15 @@ const Page = ({ data }) => {
             {/* Product Grid */}
             <div className="flex-1 pb-6">
               {/* Number 1 */}
-              {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+              {!isEmpty(data?.page?.children?.nodes) ? (
                 <ChildrenProducts data={data} />
               ) : (
                 <LoadMoreProducts
-                  product={data?.page?.nodes[0]?.products}
-                  slug={data?.page?.nodes[0]?.slug}
+                  product={data?.page?.products}
+                  slug={data?.page?.slug}
                 />
               )}
-              {!isEmpty(data?.page?.nodes[0]?.children?.nodes) ? (
+              {!isEmpty(data?.page?.children?.nodes) ? (
                 <SubcategoryReadmore data={data} />
               ) : null}
             </div>
@@ -75,16 +75,16 @@ const Page = ({ data }) => {
 //       <ChildTags data={data} />
 //       <Brands data={data?.productBrands?.nodes} />
 //       <LoadMoreBrands brands={data?.productBrands} />
-//       {/* <Products product={data?.page?.nodes[0]?.products} /> */}
+//       {/* <Products product={data?.page?.products} /> */}
 //       <ChildrenProducts data={data} />
 //       <Subcategory data={data} />
 //       <LoadMoreProducts
-//         product={data?.page?.nodes[0]?.products}
-//         slug={data?.page?.nodes[0]?.slug}
+//         product={data?.page?.products}
+//         slug={data?.page?.slug}
 //       />
 //       {/* <LoadMoreProductsChildren
 //         product={data}
-//         slug={data?.page?.nodes[0]?.slug}
+//         slug={data?.page?.slug}
 //       /> */}
 //       {/* This is a simplified version and doesn't take the children into account i was just trying to get the pagination to work */}
 //       {/* If you comment out LoadMoreProducts And show just <Products/> that component seems to work */}

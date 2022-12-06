@@ -3,6 +3,7 @@ const PostFragment = `
   id
   title
   excerpt
+  content
   slug
   featuredImage {
     node {
@@ -10,5 +11,5 @@ const PostFragment = `
     }
   }
  }
-`
+`;
 export default PostFragment;

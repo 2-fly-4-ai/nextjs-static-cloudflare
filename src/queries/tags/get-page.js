@@ -4,87 +4,77 @@ import { HeaderFooter } from "../get-menus";
 import SeoFragment from "../fragments/seo";
 
 export const GET_PAGE = gql`
-query GET_PAGE($uri: [String]) {
+query GET_PAGE($uri: ID!) {
 	${HeaderFooter}
-	page: productTags(where: {slug: $uri}) {
-	  nodes {
-		name
-		slug
-		uri
-		seo {
+	page: productTag(id: $uri, idType: SLUG) {
+	  name
+	  slug
+	  uri
+	  seo {
+		openGraph {
+		  description
+		  siteName
 		  title
-		  canonical
-		  metaDesc
-		  metaRobotsNofollow
-		  metaRobotsNoindex
-		  breadcrumbs {
-			text
-			url
-		  }
+		  url
 		}
-		products: products(first: 10, where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAG}}}) {
-		  nodes {
-			title
-			uri
-			single_product_acf {
-			  asin
-			  brand
-			  productAida
-			  productDescription
-			  productImageMainUrl
-			  upc
-			  modelNumber
-			  keywordTerm
-			  fieldGroupName
-			  productUrl
-			}
-			productTags {
-			  nodes {
-				name
-				uri
-				roundupFields {
-				  hero
-				  roundupFeatureImage
-				}
+		breadcrumbTitle
+		description
+		focusKeywords
+		breadcrumbs {
+		  text
+		  url
+		}
+		canonicalUrl
+		robots
+		title
+	  }
+	  products {
+		nodes {
+		  title
+		  uri
+		  single_product_acf {
+			asin
+			brand
+			productAida
+			productDescription
+			productImageMainUrl
+			productUrl
+		  }
+		  productTags {
+			nodes {
+			  name
+			  uri
+			  roundupFields {
+				hero
+				roundupFeatureImage
 			  }
 			}
-			productBrands {
-			  nodes {
-				uri
-				seo {
-				  title
-				  canonical
-				  metaDesc
-				  metaRobotsNofollow
-				  metaRobotsNoindex
-				  breadcrumbs {
-					text
-					url
-				  }
-				}
-				name
-				brand_fields {
-				  searchVolume
-				}
-			  }
+		  }
+		  productBrands {
+			nodes {
+			  name
+			  uri
+			  seo {
+                robots
+              }
 			}
-			productTaxonomies {
-			  nodes {
-				uri
-				name
-				parent {
-				  node {
-					name
-					uri
-					parent {
-					  node {
-						name
-						uri
-						parent {
-						  node {
-							name
-							uri
-						  }
+		  }
+		  productTaxonomies {
+			nodes {
+			  uri
+			  name
+			  parent {
+				node {
+				  name
+				  uri
+				  parent {
+					node {
+					  name
+					  uri
+					  parent {
+						node {
+						  name
+						  uri
 						}
 					  }
 					}
@@ -93,22 +83,22 @@ query GET_PAGE($uri: [String]) {
 			  }
 			}
 		  }
-		  pageInfo {
+		}
+		pageInfo {
 			hasNextPage
 			endCursor
 		  }
-		}
-		roundupFields {
-		  hero
-		  faqs
-		  howWeChose
-		  intro
-		  typesOf
-		  whatToConsider
-		  author
-		  roundupFeatureImage
-		  datepublished
-		}
+	  }
+	  roundupFields {
+		whatToConsider
+		typesOf
+		roundupFeatureImage
+		intro
+		howWeChose
+		hero
+		faqs
+		author
+		datepublished
 	  }
 	}
   }
@@ -125,10 +115,26 @@ export const GET_PAGE_BY_ID = gql`
 	    content
 	    slug
 	    uri
-	    seo {
-          ...SeoFragment
-        }
 		status
+		seo {
+			openGraph {
+			  description
+			  locale
+			  siteName
+			  title
+			  type
+			  updatedTime
+			  url
+			}
+			breadcrumbTitle
+			description
+			focusKeywords
+			breadcrumbs {
+			  text
+			  url
+			}
+			canonicalUrl
+		  }
 	  }
 	}
 	${MenuFragment}

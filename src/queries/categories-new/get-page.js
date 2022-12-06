@@ -4,25 +4,36 @@ import { HeaderFooter } from "../get-menus";
 import SeoFragment from "../fragments/seo";
 
 export const GET_PAGE = gql`
-query GET_PAGE($uri: [String], $first: Int!, $after: String) {
+query GET_PAGE($uri: ID!, $first: Int!, $after: String) {
 	${HeaderFooter}
-	page: productTaxonomies(where: {slug: $uri}) {
-	  nodes {
-		name
-		slug
-		uri
-		seo {
-			title
-			canonical
-			metaDesc
-			metaRobotsNofollow
-			metaRobotsNoindex
-			breadcrumbs {
-			  text
-			  url
-			}
-		  }
-		parent {
+	page: productTaxonomy(id: $uri, idType: SLUG) {
+	  name
+	  slug
+	  uri
+	  seo {
+		openGraph {
+		  description
+		  siteName
+		  title
+		  url
+		  
+		}
+		breadcrumbTitle
+		description
+		focusKeywords
+		breadcrumbs {
+		  text
+		  url
+		}
+		canonicalUrl
+		robots
+		title
+	  }
+	  parent {
+		node {
+		  name
+		  uri
+		  parent {
 			node {
 			  name
 			  uri
@@ -30,168 +41,25 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 				node {
 				  name
 				  uri
-				  seo {
-					title
-					canonical
-					metaDesc
-					metaRobotsNofollow
-					metaRobotsNoindex
-					breadcrumbs {
-					  text
-					  url
-					}
-				  }
-				  parent {
-				node {
-				  name
-				  uri
-				}
-			}
-				}
-			}
-			}
-		}
-		children {
-			nodes {
-			  name
-			  uri
-			  products(
-				after: $after 
-				first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
-				nodes {
-				  title
-				  uri
-				  seo {
-					title
-					canonical
-					metaDesc
-					metaRobotsNofollow
-					metaRobotsNoindex
-					breadcrumbs {
-					  text
-					  url
-					}
-				  }
-				  single_product_acf {
-					  asin
-					  brand
-					  productAida
-					  productImageMainUrl
-					  upc
-					  modelNumber
-					  keywordTerm
-					  fieldGroupName
-					  productUrl
-				   }
-				   productTags {
-					nodes {
-					  name
-					  uri
-					}
-				  }
-				 
-				}
-				pageInfo {
-					hasNextPage
-					endCursor
-				  }
-			  }
-			  children {
-				nodes {
-				  name
-				  uri
-				  products(
-					after: $after 
-					first: 10 where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
-					nodes {
-					  title
-					  uri
-					  seo {
-						title
-						canonical
-						metaDesc
-						metaRobotsNofollow
-						metaRobotsNoindex
-						breadcrumbs {
-						  text
-						  url
-						}
-					  }
-					  single_product_acf {
-						  asin
-						  brand
-						  productAida
-						  productImageMainUrl
-						  upc
-						  modelNumber
-						  keywordTerm
-						  fieldGroupName
-							  productUrl
-					   }
-					   productTags {
-						nodes {
-						  name
-						  uri
-						}
-					  }
-					 
-					}
-					pageInfo {
-						hasNextPage
-						endCursor
-					  }
-				  }
-				  children {
-					nodes {
-					  name
-					  uri
-					  products(
-						first: 10
-						after: $after 
-						where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}) {
-						nodes {
-						  title
-						  uri
-						  single_product_acf {
-							  asin
-							  brand
-							  productAida
-							  productImageMainUrl
-							  upc
-							  modelNumber
-							  keywordTerm
-							  fieldGroupName
-							  productUrl
-						   }
-						   productTags {
-							nodes {
-							  name
-							  uri
-							}
-						  }
-						  
-						}
-						pageInfo {
-							hasNextPage
-							endCursor
-						  }
-					  }
-					}
-				  }
 				}
 			  }
 			}
 		  }
-		
-		  products: products(
-			first: $first
+		}
+	  }
+	  children {
+		nodes {
+		  name
+		  uri
+		  products(
 			after: $after
-			where: { taxQuery: { taxArray: { taxonomy: PRODUCTTAXONOMY } } }
+			first: 10
+			where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}
 		  ) {
-		  nodes {
-			title
-			uri
-			single_product_acf {
+			nodes {
+			  title
+			  uri
+			  single_product_acf {
 				asin
 				brand
 				productAida
@@ -208,25 +76,112 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 				  uri
 				}
 			  }
-			  
+			}
+			pageInfo {
+			  hasNextPage
+			  endCursor
+			}
 		  }
-		  pageInfo {
-			hasNextPage
-			endCursor
+		  children {
+			nodes {
+			  name
+			  uri
+			  products(
+				after: $after
+				first: 10
+				where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}
+			  ) {
+				nodes {
+				  title
+				  uri
+				  single_product_acf {
+					asin
+					brand
+					productAida
+					productImageMainUrl
+					upc
+					modelNumber
+					keywordTerm
+					fieldGroupName
+					productUrl
+				  }
+				  productTags {
+					nodes {
+					  name
+					  uri
+					}
+				  }
+				}
+				pageInfo {
+				  hasNextPage
+				  endCursor
+				}
+			  }
+			  children {
+				nodes {
+				  name
+				  uri
+				  products(
+					first: 10
+					after: $after
+					where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}
+				  ) {
+					nodes {
+					  title
+					  uri
+					  single_product_acf {
+						asin
+						brand
+						productAida
+						productImageMainUrl
+						upc
+						modelNumber
+						keywordTerm
+						fieldGroupName
+						productUrl
+					  }
+					  productTags {
+						nodes {
+						  name
+						  uri
+						}
+					  }
+					}
+					pageInfo {
+					  hasNextPage
+					  endCursor
+					}
+				  }
+				}
+			  }
+			}
 		  }
 		}
 	  }
-	}
-	productBrands(
-		where: { orderby: COUNT, order: DESC }
-		first: 150
-		
+	  products: products(
+		first: $first
+		after: $after
+		where: {taxQuery: {taxArray: {taxonomy: PRODUCTTAXONOMY}}}
 	  ) {
 		nodes {
-		  name
+		  title
 		  uri
-		  seo {
-			metaRobotsNoindex
+		  single_product_acf {
+			asin
+			brand
+			productAida
+			productImageMainUrl
+			upc
+			modelNumber
+			keywordTerm
+			fieldGroupName
+			productUrl
+		  }
+		  productTags {
+			nodes {
+			  name
+			  uri
+			}
 		  }
 		}
 		pageInfo {
@@ -234,6 +189,16 @@ query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 		  endCursor
 		}
 	  }
+	}
+	productBrands(where: {orderby: COUNT, order: DESC}, first: 150) {
+	  nodes {
+		name
+		uri
+		seo{
+			robots
+		}
+	  }
+	}
   }
 ${MenuFragment}
 
@@ -248,12 +213,28 @@ export const GET_PAGE_BY_ID = gql`
 	    content
 	    slug
 	    uri
-	    seo {
-          ...SeoFragment
-        }
 		status
+		seo {
+			openGraph {
+			  description
+			  siteName
+			  title
+			  url
+			  
+			}
+			breadcrumbTitle
+			description
+			focusKeywords
+			breadcrumbs {
+			  text
+			  url
+			}
+			canonicalUrl
+			robots
+			title
+		  }
 	  }
 	}
 	${MenuFragment}
-	${SeoFragment}
+	
 `;

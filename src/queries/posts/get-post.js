@@ -15,8 +15,24 @@ export const GET_POST = gql`
 		uri
 		date
 		seo {
-		  ...SeoFragment
-		}
+			openGraph {
+			  description
+			  siteName
+			  title
+			  url
+			  
+			}
+			breadcrumbTitle
+			description
+			focusKeywords
+			breadcrumbs {
+			  text
+			  url
+			}
+			canonicalUrl
+			robots
+			title
+		  }
 		featuredImage {
 		  node {
 			...ImageFragment
@@ -28,9 +44,15 @@ export const GET_POST = gql`
 		  }
 		}
 	  }
+	  posts (first: 5){
+		nodes {
+		  uri
+		  title
+		  excerpt(format: RENDERED)
+		}
+	  }
 	}
 	${MenuFragment}
-	${SeoFragment}
 	${ImageFragment}
 `;
 
@@ -43,12 +65,9 @@ export const GET_POST_BY_ID = gql`
 	    content
 	    slug
 	    uri
-	    seo {
-          ...SeoFragment
-        }
 		status
 	  }
 	}
 	${MenuFragment}
-	${SeoFragment}
+	
 `;

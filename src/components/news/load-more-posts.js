@@ -100,14 +100,14 @@ const LoadMorePosts = ({ posts, classes, graphQLQuery, searchQuery }) => {
     <div className={classes}>
       <Posts posts={postsData} />
       {hasNextPage ? (
-        <div className="w-full flex justify-center lg:my-10">
+        <div className="w-full flex justify-center mb-10">
           {loading ? (
-            <div className="flex justify-center w-full border border-white px-3 py-2 my-8">
+            <div className="py-2.5 uppercase px-7 mr-2 text-sm font-medium text-gray-700 bg-white rounded-full border-4 border-gray-200 hover:bg-gray-100 hover:text-blue-700  focus:outline-none  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">
               Loading...
             </div>
           ) : (
             <button
-              className="flex items-center cursor-pointer	bg-gray-100 hover:bg-gray-600 hover:text-white transition-colors duration-500 border border-gray-500 px-4 py-3"
+              className="py-2.5 uppercase px-7 mr-2 text-sm font-medium text-gray-700 bg-white rounded-full border-4 border-gray-200 hover:bg-gray-100 hover:text-blue-700  focus:outline-none  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center"
               onClick={() => loadMoreItems(endCursor)}
             >
               Load more

@@ -5,10 +5,8 @@ import { handleRedirectsAndReturnData } from "../../src/utils/slug";
 import { GET_NEWS } from "../../src/queries/news/get-news";
 import LoadMorePosts from "../../src/components/news/load-more-posts";
 
-//This is an example of loadmore being used. But not on a catch all route. Doesn't really do what I need and I am unable to deconstruct this code into something useful.
-//Also do not like the way evey little piece has been made into seperate component. Seperate posts component, seperate post component.
-
 const News = ({ data }) => {
+  console.warn({ data });
   return (
     <Layout data={data}>
       <LoadMorePosts posts={data?.posts} />

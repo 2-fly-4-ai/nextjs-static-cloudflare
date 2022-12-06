@@ -18,6 +18,10 @@ export const GET_POST = gql`
 				name
 				slug
 				uri
+				seo {
+					robots
+				}
+				
 			}
 			}
 			productTags {
@@ -110,11 +114,28 @@ export const GET_POST = gql`
 			productSpecs
 			productUrl
 		  }
+		  seo {
+			openGraph {
+			  description
+			  siteName
+			  title
+			  url
+			  
+			}
+			breadcrumbTitle
+			description
+			focusKeywords
+			breadcrumbs {
+			  text
+			  url
+			}
+			canonicalUrl
+			robots
+			title
+		  }
 		  
 
-	    seo {
-          ...SeoFragment
-      }
+	    
       
 	  featuredImage {
         node {
@@ -125,7 +146,7 @@ export const GET_POST = gql`
 	  }
 	}
 	${MenuFragment}
-	${SeoFragment}
+	
 	${ImageFragment}
 `;
 
@@ -138,9 +159,25 @@ export const GET_POST_BY_ID = gql`
 	    content
 	    slug
 	    uri
-	    seo {
-          ...SeoFragment
-        }
+		seo {
+			openGraph {
+			  description
+			  siteName
+			  title
+			  url
+			  
+			}
+			breadcrumbTitle
+			description
+			focusKeywords
+			breadcrumbs {
+			  text
+			  url
+			}
+			canonicalUrl
+			robots
+			title
+		  }
 		status
 	  }
 	}

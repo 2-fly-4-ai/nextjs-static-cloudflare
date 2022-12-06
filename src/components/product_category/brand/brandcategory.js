@@ -6,16 +6,14 @@ import { sanitize } from "../../../../src/utils/miscellaneous";
 export default function brandcategory({ data }) {
   return (
     <div>
-      {!isEmpty(
-        data?.page?.nodes[0]?.products?.nodes[0]?.productTaxonomies?.nodes
-      ) ? (
+      {!isEmpty(data?.page?.products?.nodes[0]?.productTaxonomies?.nodes) ? (
         <div className="space-x-2 mt-2 flex flex-col">
           <span className="text-gray-800 mx-2 my-4 text-left font-semibold">
             Categories:{" "}
           </span>
           <div>
             <ul className="flex flex-wrap align items-start gap-1">
-              {data?.page?.nodes[0]?.products?.nodes[0]?.productTaxonomies?.nodes.map(
+              {data?.page?.products?.nodes[0]?.productTaxonomies?.nodes.map(
                 (child) => (
                   <li
                     key={child.name}
@@ -23,7 +21,7 @@ export default function brandcategory({ data }) {
                   >
                     <Link href={child.uri}>
                       <a
-                        className="text-gray-600 border border-gray-500 rounded-full px-2 text-sm py-0.5 pb-1.5 hover:bg-gray-200"
+                        className="text-gray-600 border-2 border-gray-300 rounded-full px-2 text-sm py-0.5 pb-1.5 hover:bg-gray-200"
                         dangerouslySetInnerHTML={{
                           __html: sanitize(child.name ?? {}),
                         }}

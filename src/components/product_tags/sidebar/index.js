@@ -8,7 +8,7 @@ export default function SideBar({ data }) {
   let page_brands = [];
 
   //TAG CLOUDS FOUND ON RIGHT HAND COLUMN
-  data?.page?.nodes[0]?.products?.nodes.map((product) => {
+  data?.page?.products?.nodes.map((product) => {
     product?.productTags?.nodes.map((product) => {
       let x = product?.name;
       let y = x.split(" ").length;
@@ -20,8 +20,8 @@ export default function SideBar({ data }) {
     });
   });
 
-  data?.page?.nodes[0]?.products?.nodes.map((product) => {
-    let seo_check = product?.productBrands?.nodes[0]?.seo?.metaRobotsNoindex;
+  data?.page?.products?.nodes.map((product) => {
+    let seo_check = product?.productBrands?.nodes[0]?.seo?.robots[1];
     if (seo_check == "noindex") {
       return;
     }
@@ -36,6 +36,12 @@ export default function SideBar({ data }) {
   });
 
   page_tags = page_tags
+    .filter(
+      (v, i, a) =>
+        a.findIndex((t) => JSON.stringify(t) === JSON.stringify(v)) === i
+    )
+    .sort();
+  page_brands = page_brands
     .filter(
       (v, i, a) =>
         a.findIndex((t) => JSON.stringify(t) === JSON.stringify(v)) === i
@@ -64,7 +70,7 @@ export default function SideBar({ data }) {
                       >
                         <Link href={tag.uri}>
                           <a
-                            className="text-gray-600 border border-gray-500 rounded-full px-2 text-sm py-0.5 pb-1.5 bg-white hover:bg-gray-200"
+                            className="text-gray-600 border-2 border-gray-300 rounded-full px-2 text-sm py-0.5 pb-1.5 bg-white hover:bg-gray-200"
                             dangerouslySetInnerHTML={{
                               __html: sanitize(tag?.name ?? {}),
                             }}
@@ -88,7 +94,7 @@ export default function SideBar({ data }) {
                       >
                         <Link href={brand?.nodes[0]?.uri}>
                           <a
-                            className="text-gray-600 border bg-white border-gray-500 rounded-full px-2 overflow-hidden text-sm py-0.5 pb-1.5 hover:bg-gray-200"
+                            className="text-gray-600 border-2 bg-white border-gray-300 rounded-full px-2 overflow-hidden text-sm py-0.5 pb-1.5 hover:bg-gray-200"
                             dangerouslySetInnerHTML={{
                               __html: sanitize(brand?.nodes[0]?.name ?? {}),
                             }}
@@ -115,7 +121,7 @@ export default function SideBar({ data }) {
                       <article className="flex mb-8">
                         <div className="flex flex-col justify-center">
                           <div
-                            className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white"
+                            className="mb-2 text-xl font-bold leading-tight capitalize text-gray-900 dark:text-white"
                             dangerouslySetInnerHTML={{
                               __html: sanitize(tag?.name ?? {}),
                             }}
@@ -136,7 +142,7 @@ export default function SideBar({ data }) {
                             href="#"
                             className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                           >
-                            Read in 8 minutes
+                            Read Buyer's Guide
                           </a>
                         </div>
                       </article>

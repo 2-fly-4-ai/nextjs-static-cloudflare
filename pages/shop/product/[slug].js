@@ -16,6 +16,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import * as React from "react";
 import { useState } from "react";
+import Image from "next/image";
 
 //FUTURE FEATURE REQUEST. ADD LOAD MORE FOR COMMENTS COMPONENT.
 
@@ -63,10 +64,10 @@ const Post = ({ data }) => {
       {/* The whole page */}
       <div className="px-6 py-4 flex-col">
         {/* Top-box-Whole */}
-        <div className="container grid grid-cols-2 gap-10 mx-auto">
+        <div className="container flex flex-col lg:flex-row gap-10 mx-auto">
           {/* Top-box-left */}
-          <div>
-            <div className="container pt-4 pb-8 flex items-center ">
+          <div className="">
+            <div className="container pt-4 pb-8 flex items-center">
               <a href="" className="text-primary text-base">
                 <i className="fa-solid fa-house"></i>
               </a>
@@ -75,7 +76,7 @@ const Post = ({ data }) => {
               </span>
 
               {/* BreadCrumb */}
-              <p className="text-gray-600 pt-2 font-medium">
+              <p className="text-gray-600 pt-2 font-medium hidden">
                 {!isEmpty(
                   data?.post?.productTaxonomies?.nodes[0]?.parent?.node?.parent
                     ?.node?.parent?.node?.name
@@ -140,10 +141,12 @@ const Post = ({ data }) => {
               </p>
             </div>
 
-            <img
+            <Image
               src={data?.post?.single_product_acf?.productImageMainUrl}
               alt="product"
               className="max-h-96"
+              height="600"
+              width="600"
             />
             <div className="grid grid-cols-5 gap-4 mt-4">
               {data?.post?.single_product_acf?.productImageGalleryUrls
@@ -151,7 +154,7 @@ const Post = ({ data }) => {
                 .slice(0, 5)
                 .map((imageUrl, index) => {
                   return (
-                    <img
+                    <Image
                       onClick={() => {
                         setOpen(true);
                         activeCategory(index);
@@ -159,7 +162,11 @@ const Post = ({ data }) => {
                       key={imageUrl}
                       src={imageUrl}
                       alt="product2"
-                      className={isActive(index) ? "..." : ""}
+                      width="400"
+                      height="400"
+                      className={`${
+                        isActive(index) ? "..." : ""
+                      } justify-center`}
                     />
                   );
                 })}
@@ -181,7 +188,7 @@ const Post = ({ data }) => {
           </div>
 
           {/* Top-box-right */}
-          <div className="flex-col">
+          <div className="flex-col w-full">
             <h2 className="text-4xl mb-3 mt-4">{data?.post?.title}</h2>
             <span className="items-center underline flex text-gray-500 border-b text  font-bold py-1 pb-1.5">
               <svg
@@ -210,12 +217,20 @@ const Post = ({ data }) => {
 							</p> */}
               <p className="space-x-2 mt-4">
                 <span className="text-gray-800 font-semibold">Brand: </span>
-                <a
-                  href={data?.post?.productBrands?.nodes[0]?.uri}
-                  className="text-gray-600 border text-sm border-gray-500 rounded-full px-4  py-1 pb-1.5"
-                >
-                  {data?.post?.productBrands?.nodes[0]?.name}
-                </a>
+
+                {data?.post?.productBrands?.nodes[0]?.seo?.robots[1] ==
+                "index" ? (
+                  <a
+                    href={data?.post?.productBrands?.nodes[0]?.uri}
+                    className="text-gray-600 border text-sm border-gray-500 rounded-full px-4  py-1 pb-1.5"
+                  >
+                    {data?.post?.productBrands?.nodes[0]?.name}
+                  </a>
+                ) : (
+                  <a className="text-gray-600 border text-sm border-gray-500 rounded-full px-4  py-1 pb-1.5">
+                    {data?.post?.productBrands?.nodes[0]?.name}
+                  </a>
+                )}
               </p>
 
               <p className="space-x-2">
@@ -242,12 +257,12 @@ const Post = ({ data }) => {
               >
                 <i className="fa-solid fa-heart"></i> View On Amazon
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="border border-gray-500 bg-yellow-300 text-gray-600 px-8 py-2 font-medium rounded-full uppercase flex items-center gap-2 hover:text-primary transition"
               >
                 <i className="fa-solid fa-heart"></i> View On Ebay
-              </a>
+              </a> */}
             </div>
 
             <div className="space-x-2 mt-5 flex">
@@ -356,8 +371,7 @@ const Post = ({ data }) => {
         </div>
 
         {/*comments-section*/}
-        <div className="flex mx-auto max-w-screen-2xl  px-8 flex-auto">
-          {/* Left-box of Comments */}
+        {/* <div className="flex mx-auto max-w-screen-2xl  px-8 flex-auto">
           <div className="w-96  pb-8">
             <div className="pb-12 border-b w-80">
               <div className="flex items-center mb-3">
@@ -476,7 +490,6 @@ const Post = ({ data }) => {
             </div>
           </div>
 
-          {/* Right-box of Comments */}
           <div className="flex-col  max-w-screen-md">
             <article className="mb-8 ">
               <div className="flex items-center mb-4 space-x-4">
@@ -880,21 +893,23 @@ const Post = ({ data }) => {
               </svg>
             </button>
           </div>
-        </div>
+        </div> */}
 
         <div className="container py-8 mx-auto">
           <h2 className="text-3xl  text-gray-800  mb-6">Related products</h2>
 
-          <div className="grid grid-cols-6 gap-3">
+          <div className="flex flex-wrap gap-3">
             {uniqueNames.map((product) => {
               return (
-                <div className="bg-white shadow rounded overflow-hidden group">
+                <div className="bg-white shadow rounded overflow-hidden group md:w-64">
                   <div className="relative">
                     <div className="h-45 flex p-2 justify-center">
-                      <img
+                      <Image
                         src={product?.single_product_acf?.productImageMainUrl}
                         alt="product 1"
                         className="max-h-56  my-auto"
+                        height="200"
+                        width="200"
                       />
                     </div>
                   </div>
@@ -908,17 +923,6 @@ const Post = ({ data }) => {
                   </div>
                 </div>
               );
-
-              {
-                console.warn(
-                  <img
-                    key={imageUrl}
-                    src={imageUrl}
-                    alt="product2"
-                    className="w-full cursor-pointer border"
-                  />
-                );
-              }
             })}
 
             {/* product 1 */}
@@ -932,10 +936,11 @@ const Post = ({ data }) => {
 export default Post;
 
 export async function getStaticProps({ params }) {
+  console.log(params.slug);
   const { data, errors } = await client.query({
     query: GET_POST,
     variables: {
-      uri: params?.slug ?? "/",
+      uri: `/shop/product/${params?.slug}`,
     },
   });
 

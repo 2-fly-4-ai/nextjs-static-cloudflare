@@ -5,8 +5,10 @@ import { handleRedirectsAndReturnData } from "../../src/utils/slug";
 import { GET_NEWS } from "../../src/queries/news/get-news";
 import LoadMorePosts from "../../src/components/news/load-more-posts";
 
-const News = ({ data }) => {
-  console.warn({ data });
+//This is an example of loadmore being used. But not on a catch all route. Doesn't really do what I need and I am unable to deconstruct this code into something useful.
+//Also do not like the way evey little piece has been made into seperate component. Seperate posts component, seperate post component.
+
+const Posts = ({ data }) => {
   return (
     <Layout data={data}>
       <LoadMorePosts posts={data?.posts} />
@@ -14,13 +16,13 @@ const News = ({ data }) => {
   );
 };
 
-export default News;
+export default Posts;
 
 export async function getStaticProps() {
   const { data, errors } = await client.query({
     query: GET_NEWS,
     variables: {
-      uri: "/news/",
+      uri: "/blog/",
       first: PER_PAGE_FIRST,
       after: null,
     },

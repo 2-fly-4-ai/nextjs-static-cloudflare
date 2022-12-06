@@ -49,10 +49,10 @@ const Page = ({ data }) => {
             <ProductTagsHeader data={data} />
             <AuthorTitleShare data={data} />
             <IntroFeaturedImage data={data} />
-            {/* <TagProducts data={data} /> */}
+            {/* <TagProducts product={data?.page?.products} /> */}
             <LoadMoreTagProducts
-              product={data?.page?.nodes[0]?.products}
-              slug={data?.page?.nodes[0]?.slug}
+              product={data?.page?.products}
+              slug={data?.page?.slug}
             />
             <ContentAccordion data={data} />
             <Share data={data} />
@@ -61,9 +61,9 @@ const Page = ({ data }) => {
         </div>
       </main>
       {/*Related Articles Component*/}
-      <ReadMore data={data} />
+      {/* <ReadMore data={data} /> */}
       {/* NEWSLETTER COMPONENT */}
-      <NewsLetter data={data} />
+      {/* <NewsLetter data={data} /> */}
     </Layout>
   );
 };

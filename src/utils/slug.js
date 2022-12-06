@@ -5,7 +5,6 @@ export const FALLBACK = "blocking";
 export const isCustomPageUri = (uri) => {
   const pagesToExclude = [
     "/",
-    "/blog/",
     "/product/",
     "/best/",
     "/news/",
@@ -44,19 +43,19 @@ export const handleRedirectsAndReturnData = (
     };
   }
 
-  // if (field && isEmpty(data?.[field])) {
-  // 	return {
-  // 		// returns the default 404 page with a status code of 404
-  // 		notFound: true
-  // 	};
-  // }
+  if (field && isEmpty(data?.[field])) {
+    return {
+      // returns the default 404 page with a status code of 404
+      notFound: true,
+    };
+  }
 
-  // if ((data?.page?.seo?.metaRobotsNoindex) == "noindex") {
-  // 	return {
-  // 		// returns the default 404 page with a status code of 404
-  // 		notFound: true
-  // 	};
-  // }
+  if (data?.page?.seo?.robots[1] == "noindex") {
+    return {
+      // returns the default 404 page with a status code of 404
+      notFound: true,
+    };
+  }
 
   // if (isEmpty(data?.page?.nodes) && isEmpty(data?.page?.seo) && isEmpty(data?.post?.seo)) {
   // 	return {
@@ -65,15 +64,15 @@ export const handleRedirectsAndReturnData = (
   // 	};
   // }
 
-  const testx = data?.page?.nodes ?? [];
-  const testx2 = testx[0]?.seo?.metaRobotsNoindex;
+  // const testx = data?.page?.nodes ?? [];
+  // const testx2 = testx[0]?.seo?.metaRobotsNoindex;
 
-  if (testx2 == "noindex") {
-    return {
-      // returns the default 404 page with a status code of 404
-      notFound: true,
-    };
-  }
+  // if (testx2 == "noindex") {
+  //   return {
+  //     // returns the default 404 page with a status code of 404
+  //     notFound: true,
+  //   };
+  // }
 
   return defaultProps;
 };

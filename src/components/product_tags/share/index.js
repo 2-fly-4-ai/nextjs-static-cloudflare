@@ -6,12 +6,12 @@ import { FacebookIcon, TwitterIcon } from "react-share";
 export default function Share({ data }) {
   return (
     <div className="flex justify-between items-center py-6 border-t border-b border-gray-200 dark:border-gray-700">
-      <aside aria-label="Share social media" s>
+      <aside aria-label="Share social media">
         <div className="inline-flex items-center  mr-2 text-xs font-medium text-gray-900 no-underline bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600  dark:hover:text-white dark:hover:bg-gray-700">
           <FacebookShareButton
-            url={`https://petsmarketplace.com${data?.page?.nodes[0]?.uri}`}
+            url={`https://petsmarketplace.com${data?.page?.uri}`}
             quote={"Best Pets Products"}
-            hashtag={`#${data?.page?.nodes[0]?.name.replace(" ", "")}`}
+            hashtag={`#${data?.page?.name.replace(" ", "")}`}
             description={"aiueo"}
             className="inline-flex items-center  text-xs font-medium w-24 justify-center h-8 border"
           >
@@ -28,8 +28,8 @@ export default function Share({ data }) {
         <div className="inline-flex items-center  mr-2 text-xs font-medium text-gray-900 no-underline bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600  dark:hover:text-white dark:hover:bg-gray-700">
           <TwitterShareButton
             title={"test"}
-            url={`https://petsmarketplace.com${data?.page?.nodes[0]?.uri}`}
-            hashtags={[`#${data?.page?.nodes[0]?.name.replace(" ", "")}`]}
+            url={`https://petsmarketplace.com${data?.page?.uri}`}
+            hashtags={[`#${data?.page?.name.replace(" ", "")}`]}
             className="inline-flex items-center  text-xs font-medium w-24 justify-center h-8 border"
           >
             <TwitterIcon
@@ -46,7 +46,7 @@ export default function Share({ data }) {
           type="button"
           onClick={() =>
             navigator.clipboard.writeText(
-              `https://petsmarketplace.com${data?.page?.nodes[0]?.uri}`
+              `https://petsmarketplace.com${data?.page?.uri}`
             )
           }
           className="inline-flex items-center py-2 px-6 text-xs font-medium text-gray-900 no-underline bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"

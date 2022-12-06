@@ -35,11 +35,11 @@ export default function ChildTags({ data }) {
   }
 
   {
-    !isEmpty(data?.page?.nodes[0]?.children?.nodes)
-      ? data?.page?.nodes[0]?.children?.nodes.map((child) => {
+    !isEmpty(data?.page?.children?.nodes)
+      ? data?.page?.children?.nodes.map((child) => {
           readChildren(child);
         })
-      : data?.page?.nodes[0]?.products?.nodes.map((product) => {
+      : data?.page?.products?.nodes.map((product) => {
           product?.productTags?.nodes.map((product) => {
             let x = product?.name;
             let y = x.split(" ").length;
@@ -76,7 +76,7 @@ export default function ChildTags({ data }) {
             >
               <Link href={tag.uri}>
                 <a
-                  className="text-gray-600 border border-gray-500 rounded-full px-2 text-sm py-0.5 pb-1.5 hover:bg-gray-200"
+                  className="text-gray-600 border-2 border-gray-300 rounded-full px-2 text-sm py-0.5 pb-1.5 hover:bg-gray-200"
                   dangerouslySetInnerHTML={{
                     __html: sanitize(tag?.name ?? {}),
                   }}

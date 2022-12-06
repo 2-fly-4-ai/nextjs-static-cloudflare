@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
-import Products from "../products";
-import { PER_PAGE_FIRST } from "../../../utils/pagination";
-import { GET_PAGE } from "../../../queries/categories-new/get-load-more-products";
+import Products from "../product_category/products";
+import { PER_PAGE_FIRST } from "../../utils/pagination";
+import { GET_PAGE } from "../../queries/brand/get-more-brand-products";
 
-const LoadMorePosts = ({
+const LoadMoreProducts = ({
   product,
   classes,
   graphQLQuery,
@@ -142,18 +142,18 @@ const LoadMorePosts = ({
     </div>
   );
 };
-LoadMorePosts.propTypes = {
+LoadMoreProducts.propTypes = {
   products: PropTypes.object,
   classes: PropTypes.string,
   graphQLQuery: PropTypes.object,
   searchQuery: PropTypes.string,
 };
 
-LoadMorePosts.defaultProps = {
+LoadMoreProducts.defaultProps = {
   products: {},
   classes: "",
   graphQLQuery: GET_PAGE,
   searchQuery: "",
 };
 
-export default LoadMorePosts;
+export default LoadMoreProducts;

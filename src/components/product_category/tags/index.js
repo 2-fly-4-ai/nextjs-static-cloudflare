@@ -5,7 +5,7 @@ import { sanitize } from "../../../utils/miscellaneous";
 export default function Tags({ data }) {
   let page_tags = [];
 
-  data?.page?.nodes[0]?.products?.nodes.map((product) => {
+  data?.page?.products?.nodes.map((product) => {
     product?.productTags?.nodes.map((product) => {
       let x = product?.name;
       let y = x.split(" ").length;
@@ -25,7 +25,7 @@ export default function Tags({ data }) {
 
   console.log(page_tags);
 
-  console.log("YYYYYYYYYY", data?.page?.nodes[0]?.products);
+  console.log("YYYYYYYYYY", data?.page?.products);
 
   console.log(page_tags);
 
@@ -43,7 +43,7 @@ export default function Tags({ data }) {
             >
               <Link href={tag.uri}>
                 <a
-                  className="text-gray-600 border border-gray-500 rounded-full px-2 text-sm py-0.5 pb-1.5 hover:bg-gray-200"
+                  className="text-gray-600 border-2 border-gray-300 rounded-full px-2 text-sm py-0.5 pb-1.5 hover:bg-gray-200"
                   dangerouslySetInnerHTML={{
                     __html: sanitize(tag?.name ?? {}),
                   }}

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { isEmpty } from "lodash";
 import { sanitize } from "../../../utils/miscellaneous";
+import Image from "next/image";
 
 export default function ReadMore({ data }) {
   let page_tags = [];
@@ -19,10 +20,10 @@ export default function ReadMore({ data }) {
   });
 
   data?.page?.nodes[0]?.products?.nodes.map((product) => {
-    let seo_check = product?.productBrands?.nodes[0]?.seo?.metaRobotsNoindex;
-    if (seo_check == "noindex") {
-      return;
-    }
+    // let seo_check = product?.productBrands?.nodes[0]?.seo?.metaRobotsNoindex;
+    // if (seo_check == "noindex") {
+    //   return;
+    // }
 
     let x = product?.productBrands?.nodes[0]?.name;
     let y = x.split(" ").length;
@@ -60,12 +61,14 @@ export default function ReadMore({ data }) {
                       className="text-gray-500 dark:text-gray-400 mb-3"
                     >
                       <Link href={tag.uri}>
-                        <article className="flex mb-8">
+                        <article className="flex mb-8 gap-4">
                           {!isEmpty(tag?.roundupFields?.roundupFeatureImage) ? (
-                            <img
+                            <Image
                               src={tag?.roundupFields?.roundupFeatureImage}
-                              className="mr-5 w-32 h-32 max-w-fullalign-middle rounded-full"
+                              className="w-32 h-32 max-w-full align-middle rounded-full"
                               alt="Image 1"
+                              width="200"
+                              height="200"
                             />
                           ) : null}
 

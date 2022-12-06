@@ -15,61 +15,58 @@ export default function ContentAccordion({ data }) {
     return id === activeId;
   }
 
-  const What_to_consider_test =
-    data?.page?.nodes[0]?.roundupFields?.whatToConsider;
+  const What_to_consider_test = data?.page?.roundupFields?.whatToConsider;
 
   if (What_to_consider_test != null) {
-    const What_to_consider_heading =
-      data?.page?.nodes[0]?.roundupFields?.whatToConsider
-        .replace("</h2>", "</h2>[split_here]")
-        .split("[split_here]")[0];
-    const What_to_consider_body =
-      data?.page?.nodes[0]?.roundupFields?.whatToConsider
-        .replace("</h2>", "</h2>[split_here]")
-        .split("[split_here]")[0];
+    const What_to_consider_heading = data?.page?.roundupFields?.whatToConsider
+      .replace("</h2>", "</h2>[split_here]")
+      .split("[split_here]")[0];
+    const What_to_consider_body = data?.page?.roundupFields?.whatToConsider
+      .replace("</h2>", "</h2>[split_here]")
+      .split("[split_here]")[0];
   }
 
-  const types_of_test = data?.page?.nodes[0]?.roundupFields?.typesOf;
+  const types_of_test = data?.page?.roundupFields?.typesOf;
   if (types_of_test != null) {
-    const types_of_heading = data?.page?.nodes[0]?.roundupFields?.typesOf
+    const types_of_heading = data?.page?.roundupFields?.typesOf
       .replace("</h2>", "</h2>[split_here]")
       .split("[split_here]")[0];
-    const types_of_body = data?.page?.nodes[0]?.roundupFields?.typesOf
+    const types_of_body = data?.page?.roundupFields?.typesOf
       .replace("</h2>", "</h2>[split_here]")
       .split("[split_here]")[0];
   }
 
-  const howWeChose_test = data?.page?.nodes[0]?.roundupFields?.howWeChose;
+  const howWeChose_test = data?.page?.roundupFields?.howWeChose;
   if (howWeChose_test != null) {
-    const howWeChose_heading = data?.page?.nodes[0]?.roundupFields?.howWeChose
+    const howWeChose_heading = data?.page?.roundupFields?.howWeChose
       .replace("</h2>", "</h2>[split_here]")
       .split("[split_here]")[0];
-    const howWeChose_body = data?.page?.nodes[0]?.roundupFields?.howWeChose
+    const howWeChose_body = data?.page?.roundupFields?.howWeChose
       .replace("</h2>", "</h2>[split_here]")
       .split("[split_here]")[0];
   }
 
-  const faqs_main_test = data?.page?.nodes[0]?.roundupFields?.faqs;
+  const faqs_main_test = data?.page?.roundupFields?.faqs;
   if (faqs_main_test != null) {
-    const faqs_main_heading = data?.page?.nodes[0]?.roundupFields?.faqs
+    const faqs_main_heading = data?.page?.roundupFields?.faqs
       .replace("</h2>", "</h2>[split_here]")
       .split("[split_here]")[0];
-    const faqs_main_body = data?.page?.nodes[0]?.roundupFields?.faqs
+    const faqs_main_body = data?.page?.roundupFields?.faqs
       .replace("</h2>", "</h2>[split_here]")
       .split("[split_here]")[0];
   }
 
   return (
-    <section class="bg-white dark:bg-gray-900">
-      <div class="py-8 px-4 mx-auto max-w-screen-2xl sm:py-8 lg:px-4 ">
+    <section className="bg-white dark:bg-gray-900">
+      <div className="py-8 px-4 mx-auto max-w-screen-2xl sm:py-8 lg:px-4 ">
         {!isEmpty(What_to_consider_test) ? (
-          <h2 class="mb-6 lg:mb-4 text-3xl lg:text-3xl tracking-tight font-extrabold text-left text-gray-900 dark:text-white capitalize">
+          <h2 className="mb-6 lg:mb-4 text-3xl lg:text-3xl tracking-tight font-extrabold text-left text-gray-900 dark:text-white capitalize">
             {" "}
-            {data?.page?.nodes[0]?.name} - Buyer's Guide
+            {data?.page?.name} - Buyer's Guide
           </h2>
         ) : null}
 
-        <div class="mx-auto max-w-screen-2xl">
+        <div className="mx-auto max-w-screen-2xl">
           <div
             id="accordion-flush"
             data-accordion="collapse"
@@ -87,13 +84,13 @@ export default function ContentAccordion({ data }) {
               >
                 <button
                   type="button"
-                  class="flex justify-between items-center py-5 w-full font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                  className="flex justify-between items-center py-5 w-full font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
                   data-accordion-target="#accordion-flush-body-1"
                   aria-expanded="true"
                   aria-controls="accordion-flush-body-1"
                 >
                   <div
-                    class="text-2xl"
+                    className="text-2xl"
                     dangerouslySetInnerHTML={{
                       __html: sanitize(
                         What_to_consider_test.replace(
@@ -113,9 +110,9 @@ export default function ContentAccordion({ data }) {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </button>
@@ -132,7 +129,7 @@ export default function ContentAccordion({ data }) {
                 aria-labelledby="accordion-flush-heading-1"
               >
                 <div
-                  class=" border-gray-200 dark:border-gray-700 prose prose-headings:font-medium prose-h3:text-2xl max-w-none prose-li:list-disc"
+                  className=" border-gray-200 dark:border-gray-700 prose prose-headings:font-medium prose-h3:text-2xl max-w-none prose-li:list-disc"
                   dangerouslySetInnerHTML={{
                     __html: sanitize(
                       What_to_consider_test.replace(
@@ -159,7 +156,7 @@ export default function ContentAccordion({ data }) {
                   } flex justify-between items-center py-5 w-full font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1"`}
                 >
                   <div
-                    class="text-2xl"
+                    className="text-2xl"
                     dangerouslySetInnerHTML={{
                       __html: sanitize(
                         types_of_test
@@ -178,9 +175,9 @@ export default function ContentAccordion({ data }) {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </button>
@@ -195,7 +192,7 @@ export default function ContentAccordion({ data }) {
                 } py-8`}
               >
                 <div
-                  class="prose prose-headings:font-medium prose-h3:text-2xl max-w-none"
+                  className="prose prose-headings:font-medium prose-h3:text-2xl max-w-none"
                   dangerouslySetInnerHTML={{
                     __html: sanitize(
                       types_of_test
@@ -220,7 +217,7 @@ export default function ContentAccordion({ data }) {
                   } flex justify-between items-center py-5 w-full font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1"`}
                 >
                   <div
-                    class="text-2xl"
+                    className="text-2xl"
                     dangerouslySetInnerHTML={{
                       __html: sanitize(
                         howWeChose_test
@@ -239,9 +236,9 @@ export default function ContentAccordion({ data }) {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </button>
@@ -257,7 +254,7 @@ export default function ContentAccordion({ data }) {
                 aria-labelledby="accordion-flush-heading-3"
               >
                 <div
-                  class="prose prose-headings:font-medium prose-h3:text-2xl max-w-none"
+                  className="prose prose-headings:font-medium prose-h3:text-2xl max-w-none"
                   dangerouslySetInnerHTML={{
                     __html: sanitize(
                       howWeChose_test
@@ -282,7 +279,7 @@ export default function ContentAccordion({ data }) {
                   } flex justify-between items-center py-5 w-full font-medium text-left text-gray-900 bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1"`}
                 >
                   <div
-                    class="text-2xl"
+                    className="text-2xl"
                     dangerouslySetInnerHTML={{
                       __html: sanitize(
                         faqs_main_test
@@ -301,9 +298,9 @@ export default function ContentAccordion({ data }) {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </button>
@@ -319,7 +316,7 @@ export default function ContentAccordion({ data }) {
             >
               {!isEmpty(faqs_main_test) ? (
                 <div
-                  class="prose prose-headings:font-medium prose-h3:text-2xl max-w-none"
+                  className="prose prose-headings:font-medium prose-h3:text-2xl max-w-none"
                   dangerouslySetInnerHTML={{
                     __html: sanitize(
                       faqs_main_test

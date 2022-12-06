@@ -15,12 +15,13 @@ import React from "react";
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 import Image from "next/image";
-import LoadMoreProducts from "../../../src/components/product_category/load_more_products";
+import LoadMoreProducts from "../../../src/components/product_brand";
 import Tags from "../../../src/components/product_category/tags";
 import BrandCategories from "../../../src/components/product_category/brand/brandcategory";
+import { PER_PAGE_FIRST } from "../../../src/utils/pagination";
 
 const Page = ({ data }) => {
-  console.warn(data);
+  console.warn("XXXXX", data);
   const router = useRouter();
   const [isMenuVisible, setMenuVisibility] = useState(false);
   const [activeId, setActiveId] = useState();
@@ -60,15 +61,15 @@ const Page = ({ data }) => {
               <h1>
                 <a
                   className=" text-gray-600 text-5xl px-2  py-1 pb-1.5 border-b-4 border-gray-400"
-                  href={data?.page?.nodes[0]?.name}
+                  href={data?.page?.name}
                 >
-                  {data?.page?.nodes[0]?.name}
+                  {data?.page?.name}
                 </a>
               </h1>
             </div>
             <LoadMoreProducts
-              product={data?.page?.nodes[0]?.products}
-              slug={data?.page?.nodes[0]?.slug}
+              product={data?.page?.products}
+              slug={data?.page?.slug}
             />
 
             {/* PRODUCT BOX */}
@@ -86,9 +87,10 @@ export async function getStaticProps({ params }) {
     query: GET_PAGE,
     variables: {
       uri: params?.slug.join("/"),
+      first: PER_PAGE_FIRST, //FIRST NUMBER SHOULD GO HERE. Lazyload should alter variables and keep appending the results. Issue is the children products have different variables to standard products list. The max products per load should be around 80 to keep within the PAYLOAD LIMITS. See how if children, then how many children/80 then that should be the number to request.
+      after: null,
     },
   });
-  console.warn("XXXXXXXXXXXXXXXXXXXXX", params?.slug.join("/"));
 
   const defaultProps = {
     props: {
@@ -118,6 +120,9 @@ export async function getStaticProps({ params }) {
  * data is already present, unlike getInitialProps which gets the page at build time but makes an api
  * call after page is served on the browser.
  *
+ * 
+ //Not 100% sure how this works but for catch all routes + ISR it uses the fallback. Hence query always set to last:1 and doesn't actually fetch all paths because that is a bottleneck when working with thousands of posts and not the right way to do it. 
+
  * @see https://nextjs.org/docs/basic-features/data-fetching#the-paths-key-required
  *
  * @returns {Promise<{paths: [], fallback: boolean}>}
@@ -136,6 +141,7 @@ export async function getStaticPaths() {
         pathsData.push({ params: { slug: slugs } });
       }
     });
+
   return {
     paths: pathsData,
     fallback: FALLBACK,

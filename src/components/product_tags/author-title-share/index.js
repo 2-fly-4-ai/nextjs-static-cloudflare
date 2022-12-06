@@ -5,10 +5,10 @@ import { FacebookIcon, TwitterIcon } from "react-share";
 
 export default function AuthorTitleShare({ data }) {
   return (
-    <div className="flex flex-col lg:flex-row justify-between lg:items-center py-6 border-t border-b border-gray-200 dark:border-gray-700">
+    <div className=" px-4 flex flex-col lg:flex-row justify-between lg:items-center py-6 border-t border-b border-gray-200 dark:border-gray-700">
       <span className="text-base mb-4 lg:mb-0 font-normal text-gray-500 dark:text-gray-400">
         <h1 className="uppercase font-bold text-xl">
-          The best {data?.page?.nodes[0]?.name}
+          The best {data?.page?.name}
         </h1>{" "}
         By{" "}
         <a
@@ -16,7 +16,7 @@ export default function AuthorTitleShare({ data }) {
           rel="author"
           className="font-bold text-gray-900 dark:text-white no-underline hover:underline"
         >
-          {data?.page?.nodes[0]?.roundupFields?.author}
+          {data?.page?.roundupFields?.author}
         </a>{" "}
         in{" "}
         <a
@@ -30,9 +30,9 @@ export default function AuthorTitleShare({ data }) {
       <aside aria-label="Share social media">
         <div className="inline-flex items-center  mr-2 text-xs font-medium text-gray-900 no-underline bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600  dark:hover:text-white dark:hover:bg-gray-700">
           <FacebookShareButton
-            url={`https://petsmarketplace.com${data?.page?.nodes[0]?.uri}`}
+            url={`https://petsmarketplace.com${data?.page?.uri}`}
             quote={"Best Pets Products"}
-            hashtag={`#${data?.page?.nodes[0]?.name.replace(" ", "")}`}
+            hashtag={`#${data?.page?.name.replace(" ", "")}`}
             description={"aiueo"}
             className="inline-flex items-center  text-xs font-medium w-24 justify-center h-8 border"
           >
@@ -49,8 +49,8 @@ export default function AuthorTitleShare({ data }) {
         <div className="inline-flex items-center  mr-2 text-xs font-medium text-gray-900 no-underline bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600  dark:hover:text-white dark:hover:bg-gray-700">
           <TwitterShareButton
             title={"test"}
-            url={`https://petsmarketplace.com${data?.page?.nodes[0]?.uri}`}
-            hashtags={[`#${data?.page?.nodes[0]?.name.replace(" ", "")}`]}
+            url={`https://petsmarketplace.com${data?.page?.uri}`}
+            hashtags={[`#${data?.page?.name.replace(" ", "")}`]}
             className="inline-flex items-center  text-xs font-medium w-24 justify-center h-8 border"
           >
             <TwitterIcon
@@ -67,7 +67,7 @@ export default function AuthorTitleShare({ data }) {
           type="button"
           onClick={() =>
             navigator.clipboard.writeText(
-              `https://petsmarketplace.com${data?.page?.nodes[0]?.uri}`
+              `https://petsmarketplace.com${data?.page?.uri}`
             )
           }
           className="inline-flex items-center py-2 px-6 text-xs font-medium text-gray-900 no-underline bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-0 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
@@ -75,7 +75,6 @@ export default function AuthorTitleShare({ data }) {
           {" "}
           <svg
             className="mr-2 w-4 h-4"
-            aria-hidden="true"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
