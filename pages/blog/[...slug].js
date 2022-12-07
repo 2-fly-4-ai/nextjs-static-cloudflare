@@ -13,7 +13,7 @@ import { sanitize } from "../../src/utils/miscellaneous";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
 import Image from "next/image";
-import NewsletterSubscribe from "../../src/components/layout-old/footer/NewsletterSubscribe";
+import NewsletterSubscribe from "../../src/components/layout/footer/NewsletterSubscribe";
 
 // THis is just an example, we wont be using pagination in this way. (Just LOAD MORE Everything)
 

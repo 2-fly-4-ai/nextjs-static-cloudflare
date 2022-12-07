@@ -5,7 +5,7 @@ import {
   PER_PAGE_REST,
 } from "../../../src/utils/pagination";
 import client from "../../../src/apollo/client";
-import Layout from "../../../src/components/layout-old";
+import Layout from "../../../src/components/layout";
 import Pagination from "../../../src/components/blog/pagination";
 import Posts from "../../../src/components/blog/posts";
 import {

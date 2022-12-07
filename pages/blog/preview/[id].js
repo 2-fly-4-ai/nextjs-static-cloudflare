@@ -12,10 +12,8 @@ import {
   isCustomPageUri,
 } from "../../src/utils/slug";
 import Link from "next/link";
-
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
-import Image from "next/image";
 import NewsletterSubscribe from "../../src/components/layout/footer/NewsletterSubscribe";
 
 const PostPreview = ({ data }) => {
