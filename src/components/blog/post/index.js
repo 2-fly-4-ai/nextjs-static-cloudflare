@@ -3,8 +3,6 @@ import Image from "../../image";
 import { sanitize } from "../../../utils/miscellaneous";
 
 const Post = ({ post }) => {
-  console.warn({ post });
-
   return (
     <div className="mb-8 ">
       <Link href={`/blog/${post?.slug}/`}>

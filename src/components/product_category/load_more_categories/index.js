@@ -52,7 +52,6 @@ const LoadMorePosts = ({ data, classes, graphQLQuery, searchQuery, slug }) => {
    * can be sent to get the next set of posts.
    */
 
-  console.warn("TEST1", product);
   const [postsData, setPostsData] = useState(product?.nodes ?? []);
   const [pageInfo, setPageInfo] = useState(product?.pageInfo);
   const [error, setError] = useState(null);
@@ -80,7 +79,6 @@ const LoadMorePosts = ({ data, classes, graphQLQuery, searchQuery, slug }) => {
   const [fetchPosts, { loading }] = useLazyQuery(graphQLQuery, {
     notifyOnNetworkStatusChange: true,
     onCompleted: (data) => {
-      console.warn("YEEZUS", data);
       /**
        * Call setPosts to concat the new set of posts to existing one and update pageInfo
        * that contains the cursor and the information about whether we have the next page.
@@ -100,7 +98,6 @@ const LoadMorePosts = ({ data, classes, graphQLQuery, searchQuery, slug }) => {
    * @param {String} endCursor Endcursor used to fetch the next set of posts.
    */
   const loadMoreItems = (slug, endCursor = null) => {
-    console.warn("SLUGGGGGGGGGGG", slug);
     let queryVariables = {
       first: PER_PAGE_FIRST, //first: PER_PAGE_FIRST,
       after: endCursor,
@@ -123,7 +120,6 @@ const LoadMorePosts = ({ data, classes, graphQLQuery, searchQuery, slug }) => {
    * values everytime a new client side request is made using setPageInfo()
    */
   const { endCursor, hasNextPage } = pageInfo || {};
-  console.warn("HELLO", endCursor);
 
   const p = { nodes: postsData };
 

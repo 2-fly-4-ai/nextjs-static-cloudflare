@@ -4,7 +4,6 @@ import Link from "next/link";
 import { sanitize } from "../../../utils/miscellaneous";
 
 export default function subcategory({ data }) {
-  console.warn({ data });
   return (
     <div>
       {!isEmpty(data?.page?.children?.nodes) ? (

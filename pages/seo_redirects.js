@@ -34,7 +34,6 @@ const Seo_redirects = ({ data }) => {
   });
 
   let xtest = seo_redirects_data.join(",");
-  console.warn("seo_redirects_data ", xtest);
 
   return xtest;
 };

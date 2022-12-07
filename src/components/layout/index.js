@@ -7,7 +7,6 @@ import { sanitize } from "../../utils/miscellaneous";
 import PropTypes from "prop-types";
 
 const Layout = ({ data, isPost, children }) => {
-  console.warn(data);
   const {
     page,
     post,

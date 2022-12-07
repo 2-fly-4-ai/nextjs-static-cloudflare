@@ -6,7 +6,6 @@ import { GET_NEWS } from "../../src/queries/news/get-news";
 import LoadMorePosts from "../../src/components/news/load-more-posts";
 
 const News = ({ data }) => {
-  console.warn({ data });
   return (
     <Layout data={data}>
       <LoadMorePosts posts={data?.posts} />

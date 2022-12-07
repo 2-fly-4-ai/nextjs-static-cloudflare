@@ -34,7 +34,6 @@ const LoadMoreBrands = ({ brands, classes, graphQLQuery, searchQuery }) => {
    */
   const setPosts = (brands) => {
     if (!brands || !brands?.nodes || !brands?.pageInfo) {
-      console.warn("not available");
       return;
     }
 
@@ -96,7 +95,6 @@ const LoadMoreBrands = ({ brands, classes, graphQLQuery, searchQuery }) => {
    */
   const { endCursor, hasNextPage } = pageInfo || {};
   const p = { nodes: postsData };
-  console.warn("YTEST", postsData);
 
   return (
     <div className={classes}>

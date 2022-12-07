@@ -8,7 +8,6 @@ import { sanitize } from "../../../../src/utils/miscellaneous";
 // Also ask how to actually work with components and Console.warn() them as you are building them.
 
 const Products = ({ product }) => {
-  console.warn("TESTING", product);
   const [isMenuVisible, setMenuVisibility] = useState(false);
 
   const [activeId, setActiveId] = useState();

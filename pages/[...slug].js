@@ -91,11 +91,10 @@ export async function getStaticPaths() {
     data?.pages?.nodes.map((page) => {
       if (!isEmpty(page?.uri) && !isCustomPageUri(page?.uri)) {
         const slugs = page?.uri?.split("/").filter((pageSlug) => pageSlug);
-        console.warn("HELLOW", slugs);
+
         pathsData.push({ params: { slug: slugs } });
       }
     });
-  console.warn("pathsData", pathsData);
   return {
     paths: pathsData,
     fallback: FALLBACK,

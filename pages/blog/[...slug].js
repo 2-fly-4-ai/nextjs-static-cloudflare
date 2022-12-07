@@ -19,7 +19,6 @@ import NewsletterSubscribe from "../../src/components/layout/footer/NewsletterSu
 
 const Post = ({ data }) => {
   const router = useRouter();
-  console.warn({ data });
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -297,8 +296,6 @@ const Post = ({ data }) => {
                   Latest Posts
                 </h4>
 
-                {console.warn(data?.posts?.nodes)}
-
                 {!isEmpty(data?.posts?.nodes)
                   ? data?.posts?.nodes.map((post) => {
                       return (
@@ -307,7 +304,6 @@ const Post = ({ data }) => {
                             {post?.title}
                           </h5>
                           <p className="mb-2 font-light text-gray-500 dark:text-gray-400">
-                            {console.warn(post?.excert)}
                             {post?.excert}
                           </p>
                           <a
@@ -380,15 +376,12 @@ export async function getStaticPaths() {
 
   data?.posts?.nodes &&
     data?.posts?.nodes.map((post) => {
-      console.warn(post);
       if (!isEmpty(post?.uri)) {
         const slugs = post?.uri?.split("/").filter((pageSlug) => pageSlug);
         pathsData.push({ params: { slug: slugs } });
-        console.warn(slugs);
       }
     });
 
-  console.warn(pathsData);
   return {
     paths: pathsData,
     fallback: FALLBACK,

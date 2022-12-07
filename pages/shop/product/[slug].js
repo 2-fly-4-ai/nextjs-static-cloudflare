@@ -26,7 +26,6 @@ const Post = ({ data }) => {
   const [activeId, setActiveId] = useState();
   let slides_list = [];
   let related_products = [];
-  console.warn({ data });
 
   function activeCategory(id) {
     setActiveId(id);
@@ -47,10 +46,8 @@ const Post = ({ data }) => {
         a.findIndex((t) => JSON.stringify(t) === JSON.stringify(v)) === i
     )
     .slice(0, 12);
-  console.warn(uniqueNames);
 
   {
-    console.warn("LOOK HERE", uniqueNames);
   }
 
   // If the page is not yet generated, this will be displayed
@@ -993,7 +990,6 @@ export async function getStaticPaths() {
       }
     });
 
-  console.warn(pathsData);
   return {
     paths: pathsData,
     fallback: FALLBACK,

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { sanitize } from "../../../utils/miscellaneous";
 
 export default function Brands({ data }) {
-  console.warn("DATATEST", { data });
   return (
     <div className="space-x-2 mt-5 flex flex-col">
       <span className="text-gray-800 mx-2 my-4 text-left font-semibold">

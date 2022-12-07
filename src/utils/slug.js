@@ -23,8 +23,6 @@ export const handleRedirectsAndReturnData = (
   isPreview = false,
   loginRedirectURL = ""
 ) => {
-  console.warn(data);
-
   if (isPreview && null === data?.[field]) {
     return {
       redirect: {
