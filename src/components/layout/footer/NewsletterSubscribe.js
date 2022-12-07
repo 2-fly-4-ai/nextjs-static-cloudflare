@@ -1,5 +1,5 @@
 import MailchimpSubscribe from "react-mailchimp-subscribe";
-import NewsletterForm from "src/components/layout/footer/NewsLetterForm.js";
+import NewsletterForm from "./NewsLetterForm";
 
 const NewsletterSubscribe = () => {
   const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
