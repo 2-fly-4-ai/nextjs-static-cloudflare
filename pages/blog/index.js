@@ -1,5 +1,5 @@
 import client from "../../src/apollo/client";
-import Layout from "../../src/components/layout-old";
+import Layout from "../../src/components/layout";
 import { PER_PAGE_FIRST } from "../../src/utils/pagination";
 import { handleRedirectsAndReturnData } from "../../src/utils/slug";
 import { GET_NEWS } from "../../src/queries/news/get-news";

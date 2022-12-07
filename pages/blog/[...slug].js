@@ -1,7 +1,7 @@
 import client from "../../src/apollo/client";
 import { isEmpty } from "lodash";
 import { useRouter } from "next/router";
-import Layout from "../../src/components/layout-old";
+import Layout from "../../src/components/layout";
 import {
   FALLBACK,
   handleRedirectsAndReturnData,

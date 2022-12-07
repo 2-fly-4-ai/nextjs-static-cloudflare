@@ -6,8 +6,8 @@ import Router from "next/router";
 import client from "../src/apollo/client";
 import { handleRedirectsAndReturnData } from "../src/utils/slug";
 import { GET_MENUS } from "../src/queries/get-menus";
-import Header from "../src/components/layout-old/header";
-import Footer from "../src/components/layout-old/footer";
+import Header from "../src/components/layout/header";
+import Footer from "../src/components/layout/footer";
 import SearchBox from "../src/components/search/search-box";
 import LoadMorePosts from "../src/components/news/load-more-posts";
 import {

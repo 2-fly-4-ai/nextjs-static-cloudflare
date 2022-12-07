@@ -9,14 +9,7 @@ import {
   handleRedirectsAndReturnData,
   isCustomPageUri,
 } from "../../../src/utils/slug";
-import { sanitize } from "../../../src/utils/miscellaneous";
-import Link from "next/link";
-import React from "react";
-import { useState } from "react";
-import Image from "next/image";
 import LoadMoreProducts from "../../../src/components/product_category/load_more_products";
-import LoadMoreBrands from "../../../src/components/product_category/brand/load-more-brands";
-import Products from "../../../src/components/product_category/products";
 import { PER_PAGE_FIRST } from "../../../src/utils/pagination";
 import Subcategory from "../../../src/components/product_category/subcategory";
 import SubcategoryReadmore from "../../../src/components/product_category/subcategory_readmore";
