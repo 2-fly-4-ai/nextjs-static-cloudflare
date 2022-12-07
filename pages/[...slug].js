@@ -27,7 +27,7 @@ const Page = ({ data }) => {
       <div className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-700 flex min-h-almost-screen max-w-screen-2xl m-auto">
         <div className="flex justify-between px-6 m-auto max-w-screen-xl  prose-headings:text-white prose-p:text-white prose-em:text-white prose-strong:text-white prose-li:text-white">
           <div
-            className="prose prose prose-p:text-black prose-a:text-black prose-strong:text-black prose-li:text-black prose-headings:text-black max-w-none"
+            className="prose prose-p:text-black prose-a:text-black prose-strong:text-black prose-li:text-black prose-headings:text-black max-w-none"
             dangerouslySetInnerHTML={{
               __html: sanitize(data?.page?.content ?? {}),
             }}

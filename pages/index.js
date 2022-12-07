@@ -261,7 +261,7 @@ export default function Home({ data }) {
                             tag.products?.nodes[0]?.single_product_acf
                               ?.productImageMainUrl
                           ) ? (
-                            <div className="lg:h-44  2xl:max-h-72 flex flex-col bg-white">
+                            <div className="2xl:max-h-72 flex flex-col bg-white">
                               <Image
                                 src={
                                   tag.products?.nodes[0]?.single_product_acf

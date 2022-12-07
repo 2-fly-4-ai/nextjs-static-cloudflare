@@ -4,7 +4,7 @@ const allowedImageWordPressDomain = new URL(
 ).hostname;
 
 module.exports = {
-  async redirects() {
+  async redirects(NEXT_PUBLIC_WORDPRESS_SITE_URL) {
     return [
       {
         source: "/post-sitemap.xml",
@@ -15,43 +15,37 @@ module.exports = {
       },
       {
         source: "/page-sitemap.xml",
-        destination:
-          "https://staging-petsmarketplace-staging.kinsta.cloud/page-sitemap.xml",
+        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/page-sitemap.xml`,
         permanent: false,
         basePath: false,
       },
       {
         source: "/product-sitemap.xml",
-        destination:
-          "https://staging-petsmarketplace-staging.kinsta.cloud/product-sitemap.xml",
+        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product-sitemap.xml`,
         permanent: false,
         basePath: false,
       },
       {
         source: "/category-sitemap.xml",
-        destination:
-          "https://staging-petsmarketplace-staging.kinsta.cloud/category-sitemap.xml",
+        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/category-sitemap.xml`,
         permanent: false,
         basePath: false,
       },
       {
         source: "/product_taxonomy-sitemap.xml",
-        destination:
-          "https://staging-petsmarketplace-staging.kinsta.cloud/product_taxonomy-sitemap.xml",
+        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_taxonomy-sitemap.xml`,
         permanent: false,
         basePath: false,
       },
       {
         source: "/product_tag-sitemap.xml",
-        destination:
-          "https://staging-petsmarketplace-staging.kinsta.cloud/product_tag-sitemap.xml",
+        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_tag-sitemap.xml`,
         permanent: false,
         basePath: false,
       },
       {
         source: "/product_brand-sitemap.xml",
-        destination:
-          "https://staging-petsmarketplace-staging.kinsta.cloud/product_brand-sitemap.xml",
+        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_brand-sitemap.xml`,
         permanent: false,
         basePath: false,
       },

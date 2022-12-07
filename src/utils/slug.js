@@ -5,9 +5,9 @@ export const FALLBACK = "blocking";
 export const isCustomPageUri = (uri) => {
   const pagesToExclude = [
     "/",
+    "blog",
     "/product/",
     "/best/",
-    "/news/",
     "/search/",
     "/loadmoreproducts/",
   ];
