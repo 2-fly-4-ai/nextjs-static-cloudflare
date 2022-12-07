@@ -10,7 +10,7 @@ import {
   FALLBACK,
   handleRedirectsAndReturnData,
   isCustomPageUri,
-} from "../../src/utils/slug";
+} from "../../../src/utils/slug";
 import Link from "next/link";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
