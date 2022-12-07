@@ -1,7 +1,7 @@
 import { isEmpty, isArray } from "lodash";
 import client from "../../../src/apollo/client";
 import { useRouter } from "next/router";
-import Layout from "../../../src/components/layout";
+import Layout from "../../../src/components/layout-old";
 import {
   FALLBACK,
   handleRedirectsAndReturnData,

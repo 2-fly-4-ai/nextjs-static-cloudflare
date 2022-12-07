@@ -1,7 +1,7 @@
 import client from "../../src/apollo/client";
 import { isEmpty } from "lodash";
 import { useRouter } from "next/router";
-import Layout from "../../src/components/layout";
+import Layout from "../../src/components/layout-old";
 import {
   FALLBACK,
   handleRedirectsAndReturnData,
@@ -13,7 +13,7 @@ import { sanitize } from "../../src/utils/miscellaneous";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
 import Image from "next/image";
-import NewsletterSubscribe from "../../src/components/layout/footer/NewsletterSubscribe";
+import NewsletterSubscribe from "../../src/components/layout-old/footer/NewsletterSubscribe";
 
 // THis is just an example, we wont be using pagination in this way. (Just LOAD MORE Everything)
 
