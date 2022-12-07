@@ -62,7 +62,7 @@ export default function ContentAccordion({ data }) {
         {!isEmpty(What_to_consider_test) ? (
           <h2 className="mb-6 lg:mb-4 text-3xl lg:text-3xl tracking-tight font-extrabold text-left text-gray-900 dark:text-white capitalize">
             {" "}
-            {data?.page?.name} - Buyer's Guide
+            {data?.page?.name} - Buyer&lsquo;s Guide
           </h2>
         ) : null}
 

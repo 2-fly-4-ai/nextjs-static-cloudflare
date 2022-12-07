@@ -50,19 +50,18 @@ const Image = (props) => {
 
     return (
       <div className={cx("relative", containerClassNames)}>
-        <Image {...attributes} />
+        <Image {...attributes} alt={altText || title} />
       </div>
     );
   } else {
     const attributes = {
-      alt: altText || title,
       src: sourceUrl || (showDefault ? DEFAULT_IMG_URL : ""),
       width: width || "auto",
       height: height || "auto",
       className,
       ...rest,
     };
-    return <Image {...attributes} />;
+    return <Image {...attributes} alt={altText || title} />;
   }
 };
 

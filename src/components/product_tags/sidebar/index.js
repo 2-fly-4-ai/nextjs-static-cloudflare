@@ -142,7 +142,7 @@ export default function SideBar({ data }) {
                             href="#"
                             className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                           >
-                            Read Buyer's Guide
+                            Read Buyer&lsquo;s Guide
                           </a>
                         </div>
                       </article>
