@@ -7,29 +7,26 @@ import Image from "next/image";
 import NavSearch from "../../search/nav-search";
 
 const Nav = ({ footer, header, headerMenus, slug }) => {
+  const [isMenuVisible, setMenuVisibility] = useState("");
   if (isEmpty(headerMenus)) {
     return null;
   }
-
-  const [isMenuVisible, setMenuVisibility] = useState("");
-  const [isMenuVisible2, setMenuVisibility2] = useState("");
 
   return (
     <div className="">
       <nav className="flex items-center justify-between flex-wrap bg-gradient-to-r from-green-700 to-green-400 p-6 overflow-hidden">
         <div className="max-w-screen-2xl w-full mx-auto flex flex-col sm:flex-row">
           <div className="flex flex-row items-center  flex-shrink-0 text-white mr-6">
-            <Link href="/">
-              <a>
-                <img
+            <div className="mr-2">
+              <Link href="/">
+                <Image
                   src={header?.siteLogoUrl ?? ""}
                   alt=""
                   width="48"
                   height="48"
-                  className="mr-4"
                 />
-              </a>
-            </Link>
+              </Link>
+            </div>
             <div className="flex flex-col items-start justify-start">
               <span className="font-semibold text-xl tracking-tight">
                 {header?.siteTitle}
@@ -137,12 +134,12 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
             <div className="flex-col-reverse flex lg:flex-row">
               {"search" !== slug ? <NavSearch /> : null}
               <div className="lg:flex items-center">
-                <a
+                <Link
                   href="/shop/category/pet-supplies"
                   className="lg:ml-2 inline-block text-sm font-medium px-4 py-3 leading-none border  text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
                 >
                   Shop
-                </a>
+                </Link>
               </div>
             </div>
           </div>

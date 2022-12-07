@@ -302,7 +302,7 @@ const Post = ({ data }) => {
                 {!isEmpty(data?.posts?.nodes)
                   ? data?.posts?.nodes.map((post) => {
                       return (
-                        <div className="mb-6">
+                        <div className="mb-6" key={post?.title}>
                           <h5 className="mb-2 text-lg font-bold leading-tight text-gray-800 dark:text-white">
                             {post?.title}
                           </h5>
@@ -332,9 +332,6 @@ const Post = ({ data }) => {
 export default Post;
 
 export async function getStaticProps({ params }) {
-  console.warn("TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", {
-    params,
-  });
   const { data, errors } = await client.query({
     query: GET_POST,
     variables: {

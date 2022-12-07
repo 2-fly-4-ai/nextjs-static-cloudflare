@@ -901,7 +901,10 @@ const Post = ({ data }) => {
           <div className="flex flex-wrap gap-3">
             {uniqueNames.map((product) => {
               return (
-                <div className="bg-white shadow rounded overflow-hidden group md:w-64">
+                <div
+                  className="bg-white shadow rounded overflow-hidden group md:w-64"
+                  key={product?.title}
+                >
                   <div className="relative">
                     <div className="h-45 flex p-2 justify-center">
                       <Image
