@@ -3,6 +3,7 @@ import { GET_PAGES_URI } from "../src/queries/pages/get-pages";
 import { isEmpty } from "lodash";
 import { GET_PAGE } from "../src/queries/pages/get-page";
 import { useRouter } from "next/router";
+import Layout from "../src/components/layout";
 
 import {
   FALLBACK,
