@@ -19,16 +19,12 @@ import SideBar from "../../src/components/product_tags/sidebar";
 import LoadMoreTagProducts from "../../src/components/product_tags/load-more-tag-products";
 
 const Page = ({ data }) => {
-  const router = useRouter();
   // NOT USING THIS... Delete in next cleanup
-  function handleFocus() {
-    searchInput.current.blur(); // removing focus
-  }
+  // function handleFocus() {
+  //   searchInput.current.blur(); // removing focus
+  // }
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Layout data={data}>
