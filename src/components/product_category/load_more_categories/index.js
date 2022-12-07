@@ -59,7 +59,9 @@ const LoadMorePosts = ({ data, classes, graphQLQuery, searchQuery, slug }) => {
   /**
    * If value of 'posts' passed to this component changes, set new post data and page info.
    */
-  useEffect(() => {}, [product?.nodes]);
+  useEffect(() => {
+    setPostsData(product?.nodes);
+  }, [product?.nodes]);
 
   const setPosts = (product) => {
     if (!product || !product?.nodes || !product?.pageInfo) {

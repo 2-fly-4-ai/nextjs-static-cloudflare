@@ -12,6 +12,7 @@ export default function IntroFeaturedImage({ data }) {
             src={data?.page?.roundupFields?.roundupFeatureImage}
             width="400"
             height="400"
+            alt={data?.page?.title}
           />
         </div>
       ) : null}

@@ -19,6 +19,7 @@ export default function TagProducts({ product }) {
                   height="256"
                   width="256"
                   objectFit="contain"
+                  alt={product?.title}
                 />
               </div>
             </div>
