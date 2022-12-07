@@ -21,8 +21,6 @@ import BrandCategories from "../../../src/components/product_category/brand/bran
 import { PER_PAGE_FIRST } from "../../../src/utils/pagination";
 
 const Page = ({ data }) => {
-  console.warn("XXXXX", data);
-  const router = useRouter();
   const [isMenuVisible, setMenuVisibility] = useState(false);
   const [activeId, setActiveId] = useState();
 
@@ -37,14 +35,6 @@ const Page = ({ data }) => {
 
   let page_tags = [];
   let page_brands = [];
-
-  //Product tags
-
-  //Brand Tags
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Layout data={data}>

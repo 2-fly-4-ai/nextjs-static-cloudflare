@@ -3,7 +3,7 @@ import { GET_PAGES_URI } from "../src/queries/pages/get-pages";
 import { isEmpty } from "lodash";
 import { GET_PAGE } from "../src/queries/pages/get-page";
 import { useRouter } from "next/router";
-import Layout from "../src/components/layout";
+
 import {
   FALLBACK,
   handleRedirectsAndReturnData,
@@ -13,7 +13,6 @@ import { sanitize } from "../src/utils/miscellaneous";
 import { useState } from "react";
 
 const Page = ({ data }) => {
-  console.warn(data);
   const router = useRouter();
 
   // If the page is not yet generated, this will be displayed
