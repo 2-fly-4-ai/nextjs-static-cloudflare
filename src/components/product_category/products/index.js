@@ -42,6 +42,7 @@ const Products = ({ product }) => {
                     height="256"
                     width="256"
                     objectFit="contain"
+                    alt={product?.title}
                   />
                   <div className="hidden md:flex bg-opacity-0 hover:bg-opacity-20 group bg-black w-full h-full absolute duration-500">
                     <a
@@ -93,6 +94,7 @@ const Products = ({ product }) => {
                               height="256"
                               width="256"
                               objectFit="cover"
+                              alt={product?.title}
                             />
                           </div>
                         </div>

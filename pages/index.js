@@ -278,6 +278,7 @@ export default function Home({ data }) {
                                 width={200}
                                 height={200}
                                 objectFit="contain"
+                                alt={tag?.name}
                               />
                               <h5 className=" py-3 px-2 font-medium tracking-tight text-gray-900 dark:text-white text-center">
                                 {tag?.name}

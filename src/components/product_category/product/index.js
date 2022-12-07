@@ -11,6 +11,7 @@ const Product = ({ product, index }) => {
           height="256"
           width="256"
           objectFit="contain"
+          alt={product?.title}
         />
         <div className="hidden md:flex bg-opacity-0 hover:bg-opacity-20 group bg-black w-full h-full absolute duration-500">
           <a
@@ -60,6 +61,7 @@ const Product = ({ product, index }) => {
                     height="256"
                     width="256"
                     objectFit="cover"
+                    alt={product?.title}
                   />
                 </div>
               </div>
@@ -131,13 +133,17 @@ const Product = ({ product, index }) => {
 {
   product_list.map((product, index) => {
     return (
-      <div className="p-0 pb-3 h-68 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700">
+      <div
+        className="p-0 pb-3 h-68 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700"
+        key={product?.title}
+      >
         <div className="flex flex-col relative bg-white">
           <Image
             src={product?.single_product_acf?.productImageMainUrl}
             height="256"
             width="256"
             objectFit="contain"
+            alt={product?.title}
           />
           <div className="hidden md:flex bg-opacity-0 hover:bg-opacity-20 group bg-black w-full h-full absolute duration-500">
             <a
@@ -187,6 +193,7 @@ const Product = ({ product, index }) => {
                       height="256"
                       width="256"
                       objectFit="cover"
+                      alt={product?.title}
                     />
                   </div>
                 </div>

@@ -61,7 +61,6 @@ const LoadMorePosts = ({ data, classes, graphQLQuery, searchQuery, slug }) => {
    */
   useEffect(() => {
     setPostsData(product?.nodes);
-    setPageInfo(product?.pageInfo);
   }, [product?.nodes]);
 
   const setPosts = (product) => {
