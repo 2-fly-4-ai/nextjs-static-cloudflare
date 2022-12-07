@@ -11,6 +11,7 @@ import {
   handleRedirectsAndReturnData,
   isCustomPageUri,
 } from "../../src/utils/slug";
+import Link from "next/link";
 
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
@@ -288,25 +289,22 @@ const PostPreview = ({ data }) => {
                   Latest Posts
                 </h4>
 
-                {console.warn(data?.posts?.nodes)}
-
                 {!isEmpty(data?.posts?.nodes)
                   ? data?.posts?.nodes.map((post) => {
                       return (
-                        <div className="mb-6">
+                        <div className="mb-6" key={post?.title}>
                           <h5 className="mb-2 text-lg font-bold leading-tight text-gray-800 dark:text-white">
                             {post?.title}
                           </h5>
                           <p className="mb-2 font-light text-gray-500 dark:text-gray-400">
-                            {console.warn(post?.excert)}
                             {post?.excert}
                           </p>
-                          <a
+                          <Link
                             href={post?.uri}
                             className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                           >
                             Read Article
-                          </a>
+                          </Link>
                         </div>
                       );
                     })

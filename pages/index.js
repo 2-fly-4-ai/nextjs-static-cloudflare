@@ -65,9 +65,9 @@ export default function Home({ data }) {
               <Image
                 className="xl:h-full"
                 src="https://images.unsplash.com/photo-1551730458-be400bef0161?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt="mockup"
                 width={800}
                 height={600}
+                alt="majestic dog"
               />
             </div>
           </div>
@@ -84,6 +84,7 @@ export default function Home({ data }) {
                   className="rounded-full"
                   width={200}
                   height={200}
+                  alt="dog"
                 />
 
                 <Link
@@ -101,6 +102,7 @@ export default function Home({ data }) {
                   className="rounded-full"
                   width={200}
                   height={200}
+                  alt="cat"
                 />
                 <Link
                   href="/shop/category/pet-supplies"
@@ -117,6 +119,7 @@ export default function Home({ data }) {
                   className="rounded-full"
                   width={200}
                   height={200}
+                  alt="dog"
                 />
                 <Link
                   href="/shop/category/pet-supplies"
@@ -133,6 +136,7 @@ export default function Home({ data }) {
                   className="rounded-full"
                   width={200}
                   height={200}
+                  alt="bird"
                 />
                 <Link
                   href="/shop/category/pet-supplies"
@@ -149,6 +153,7 @@ export default function Home({ data }) {
                   className="rounded-full"
                   width={200}
                   height={200}
+                  alt="reptile"
                 />
                 <Link
                   href="/shop/category/pet-supplies"
@@ -165,6 +170,7 @@ export default function Home({ data }) {
                   className="rounded-full max-h-64"
                   width={200}
                   height={200}
+                  alt="horse"
                 />
                 <Link
                   href="/shop/category/pet-supplies"
@@ -181,6 +187,7 @@ export default function Home({ data }) {
                   className="rounded-full"
                   width={200}
                   height={200}
+                  alt="small pets"
                 />
                 <Link
                   href="/shop/category/pet-supplies"
@@ -358,7 +365,7 @@ export default function Home({ data }) {
                 <Image
                   className="mx-auto mb-4 w-36 h-36 rounded-full sm:ml-0 sm:mr-6"
                   src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=717&q=80"
-                  alt="Bonnie Avatar"
+                  alt="Benjamin Puginton - Pug with an attitude"
                   width={200}
                   height={200}
                   objectFit="cover"
@@ -431,7 +438,7 @@ export default function Home({ data }) {
                 <Image
                   className="mx-auto mb-4 w-36 h-36 rounded-full sm:ml-0 sm:mr-6"
                   src="https://images.unsplash.com/photo-1589652739890-77a7733b8a23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                  alt="Roberta Avatar"
+                  alt="Pamela Pomerian - Cute dog with glasses"
                   width={200}
                   height={200}
                   objectFit="cover"

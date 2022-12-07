@@ -62,23 +62,26 @@ export default function Search({ data }) {
     });
   };
 
-  useEffect(() => {
-    /**
-     * If the query params is set, set the searchQuery in the in
-     * 1. Set the search input value to that query.
-     * 2. Call fetchPosts to get the results as per the query string from query params.
-     */
-    if (searchQueryString) {
-      setSearchQuery(searchQueryString);
-      fetchPosts({
-        variables: {
-          first: PER_PAGE_FIRST,
-          after: null,
-          query: searchQueryString,
-        },
-      });
-    }
-  }, [searchQueryString]);
+  useEffect(
+    (fetchPosts) => {
+      /**
+       * If the query params is set, set the searchQuery in the in
+       * 1. Set the search input value to that query.
+       * 2. Call fetchPosts to get the results as per the query string from query params.
+       */
+      if (searchQueryString) {
+        setSearchQuery(searchQueryString);
+        fetchPosts({
+          variables: {
+            first: PER_PAGE_FIRST,
+            after: null,
+            query: searchQueryString,
+          },
+        });
+      }
+    },
+    [searchQueryString]
+  );
 
   const totalPostResultCount =
     queryResultPosts?.pageInfo?.offsetPagination?.total;
