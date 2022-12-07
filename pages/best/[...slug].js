@@ -3,14 +3,14 @@ import { GET_PAGES_URI } from "../../src/queries/tags/get-pages";
 import { isEmpty, slice } from "lodash";
 import { GET_PAGE } from "../../src/queries/tags/get-page";
 import { useRouter } from "next/router";
-import Layout from "../../src/components/Layout";
+import Layout from "../../src/components/layout";
 import {
   FALLBACK,
   handleRedirectsAndReturnData,
   isCustomPageUri,
 } from "../../src/utils/slug";
 import React, { useEffect, useRef } from "react";
-import ProductTagsHeader from "../../src/components/product_tags/Header";
+import ProductTagsHeader from "../../src/components/product_tags/header";
 import AuthorTitleShare from "../../src/components/product_tags/author-title-share";
 import IntroFeaturedImage from "../../src/components/product_tags/intro-featuredimg";
 import ContentAccordion from "../../src/components/product_tags/accordion";
