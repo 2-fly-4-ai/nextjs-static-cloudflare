@@ -57,7 +57,7 @@ const Layout = ({ data, isPost, children }) => {
 Layout.propTypes = {
   data: PropTypes.object,
   isPost: PropTypes.bool,
-  children: PropTypes.node,
+  children: PropTypes.object,
 };
 
 Layout.defaultProps = {
