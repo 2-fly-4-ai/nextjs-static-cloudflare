@@ -445,7 +445,7 @@ export default function Home({ data }) {
                   </span>
                   <p className="mt-2 mb-4 max-w-sm  text-gray-700 dark:text-gray-400">
                     With years of experience as a vetenarian assistant and
-                    patient. Pamela knows what's up when it comes to caring for
+                    patient. Pamela knows what is up when it comes to caring for
                     your animals.
                   </p>
                   <ul className="flex justify-center space-x-4 sm:justify-start">
