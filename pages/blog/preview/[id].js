@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon } from "react-share";
-import NewsletterSubscribe from "../../src/components/layout/footer/NewsletterSubscribe";
+import NewsletterSubscribe from "../../../src/components/layout/footer/NewsletterSubscribe";
 //fuck
 const PostPreview = ({ data }) => {
   return (
