@@ -7,10 +7,11 @@ import Image from "next/image";
 import NavSearch from "../../search/nav-search";
 
 const Nav = ({ footer, header, headerMenus, slug }) => {
-  const [isMenuVisible, setMenuVisibility] = useState("");
   if (isEmpty(headerMenus)) {
     return null;
   }
+
+  const [isMenuVisible, setMenuVisibility] = useState("");
 
   return (
     <div className="">
@@ -131,13 +132,14 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
                 </svg>
               </a>
             </div>
-            <div className="flex-col-reverse flex lg:flex-row">
+            <div className="flex-col-reverse flex lg:flex-row ">
               {"search" !== slug ? <NavSearch /> : null}
-              <div className="lg:flex items-center">
-                <Link href="/shop/category/pet-supplies">
-                  <div className="lg:ml-2 inline-block text-sm font-medium px-4 py-3 leading-none border  text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
-                    Shop
-                  </div>
+              <div className="lg:flex items-center lg:ml-2 inline-block text-sm font-medium px-4 py-3 leading-none border  text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+                <Link
+                  href="/shop/category/pet-supplies"
+                  className="lg:ml-2 inline-block text-sm font-medium px-4 py-3 leading-none border  text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+                >
+                  Shop
                 </Link>
               </div>
             </div>
