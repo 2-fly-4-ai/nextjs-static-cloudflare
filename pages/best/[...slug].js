@@ -3,30 +3,19 @@ import { GET_PAGES_URI } from "../../src/queries/tags/get-pages";
 import { isEmpty, slice } from "lodash";
 import { GET_PAGE } from "../../src/queries/tags/get-page";
 import { useRouter } from "next/router";
-import Layout from "../../src/components/layout";
+import Layout from "../../src/components/Layout";
 import {
   FALLBACK,
   handleRedirectsAndReturnData,
   isCustomPageUri,
 } from "../../src/utils/slug";
-import { sanitize } from "../../src/utils/miscellaneous";
-import Image from "next/image";
-import Link from "next/link";
-import { Accordion } from "flowbite-react";
 import React, { useEffect, useRef } from "react";
-import { useState } from "react";
-import { FacebookShareButton, TwitterShareButton } from "react-share";
-import { FacebookIcon, TwitterIcon } from "react-share";
-import Header from "../../src/components/layout/header";
 import ProductTagsHeader from "../../src/components/product_tags/Header";
 import AuthorTitleShare from "../../src/components/product_tags/author-title-share";
 import IntroFeaturedImage from "../../src/components/product_tags/intro-featuredimg";
-import TagProducts from "../../src/components/product_tags/tag_products";
 import ContentAccordion from "../../src/components/product_tags/accordion";
 import Share from "../../src/components/product_tags/share";
-import ReadMore from "../../src/components/product_tags/read-next";
 import SideBar from "../../src/components/product_tags/sidebar";
-import NewsLetter from "../../src/components/product_tags/newsletter";
 import LoadMoreTagProducts from "../../src/components/product_tags/load-more-tag-products";
 
 const Page = ({ data }) => {
