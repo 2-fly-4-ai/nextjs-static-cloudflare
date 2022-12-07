@@ -66,6 +66,7 @@ module.exports = {
       "flowbite.s3.amazonaws.com",
       "s7d2.scene7.com",
       "i.pinimg.com",
+      "localhost",
     ],
   },
   async headers() {
