@@ -27,12 +27,14 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
                 />
               </Link>
             </div> */}
-            <div className="flex flex-col items-start justify-start">
-              <span className="font-semibold text-xl tracking-tight">
-                {header?.siteTitle}
-              </span>
-              <span>{header?.siteTagLine}</span>
-            </div>
+            <Link href="/">
+              <div className="flex flex-col items-start justify-start">
+                <span className="font-semibold text-xl tracking-tight">
+                  {header?.siteTitle}
+                </span>
+                <span>{header?.siteTagLine}</span>
+              </div>
+            </Link>
             <div className="block ml-auto mr-2 lg:hidden">
               <button
                 onClick={() => setMenuVisibility(!isMenuVisible)}
@@ -54,7 +56,7 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
           <div
             className={`${
               isMenuVisible ? "max-h-full" : "h-0"
-            } overflow-hidden w-full lg:h-full block flex-grow lg:flex my-auto lg:items-center lg:w-auto`}
+            } overflow-hidden w-full lg:h-full block flex-grow lg:flex my-auto lg:items-center lg:w-auto ml-5`}
           >
             {headerMenus?.length ? (
               <div className="text-sm lg:flex-grow justify-center items-center">

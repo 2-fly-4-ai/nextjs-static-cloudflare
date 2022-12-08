@@ -102,7 +102,7 @@ const LoadMoreTagProducts = ({
     <div className={classes}>
       <TagProducts product={p} />
 
-      {test2 ? (
+      {hasNextPage ? (
         <div className="w-full flex justify-center lg:mb-10">
           {loading ? (
             <div>
