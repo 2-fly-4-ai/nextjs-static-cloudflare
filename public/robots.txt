@@ -1,0 +1,4 @@
+# petsmarketplc.com/robots.txt
+
+[...]
+Sitemap: 
