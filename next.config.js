@@ -8,8 +8,7 @@ module.exports = {
     return [
       {
         source: "/post-sitemap.xml",
-        destination:
-          "https://staging-petsmarketplace-staging.kinsta.cloud/post-sitemap.xml",
+        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/post-sitemap.xml`,
         permanent: false,
         basePath: false,
       },
