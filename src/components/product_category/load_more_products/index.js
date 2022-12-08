@@ -27,6 +27,7 @@ const LoadMorePosts = ({
    */
   useEffect(() => {
     setPostsData(product?.nodes);
+    setPageInfo(product?.pageInfo);
   }, [product?.nodes]);
 
   const setPosts = (product) => {
