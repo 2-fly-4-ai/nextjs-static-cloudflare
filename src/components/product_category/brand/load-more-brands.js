@@ -23,6 +23,7 @@ const LoadMoreBrands = ({ brands, classes, graphQLQuery, searchQuery }) => {
    */
   useEffect(() => {
     setPostsData(brands?.nodes);
+    setPageInfo(brands?.pageInfo);
   }, [brands?.nodes]);
 
   /**
