@@ -192,13 +192,13 @@ const Products = ({ data }) => {
                               <i className="fa-solid fa-heart"></i> View On
                               Amazon
                             </a>
-                            <a
+                            <Link
                               href={product?.uri}
                               className="text-sm border border-gray-500 bg-yellow-300 text-gray-600 px-8 py-2 font-medium rounded-full uppercase flex items-center gap-2 hover:text-primary transition"
                             >
                               <i className="fa-solid fa-heart"></i>Product
                               Details
-                            </a>
+                            </Link>
                           </div>
                         </dl>
                       </div>
