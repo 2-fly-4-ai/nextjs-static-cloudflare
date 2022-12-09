@@ -21,6 +21,7 @@ import Image from "next/image";
 //FUTURE FEATURE REQUEST. ADD LOAD MORE FOR COMMENTS COMPONENT.
 
 const Post = ({ data }) => {
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [activeId, setActiveId] = useState();
   let slides_list = [];
@@ -51,6 +52,9 @@ const Post = ({ data }) => {
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Layout data={data} isPost>
