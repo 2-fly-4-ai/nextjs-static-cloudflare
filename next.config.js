@@ -4,52 +4,53 @@ const allowedImageWordPressDomain = new URL(
 ).hostname;
 
 module.exports = {
-  async redirects(NEXT_PUBLIC_WORDPRESS_SITE_URL) {
-    return [
-      {
-        source: "/post-sitemap.xml",
-        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/post-sitemap.xml`,
-        permanent: false,
-        basePath: false,
-      },
-      {
-        source: "/page-sitemap.xml",
-        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/page-sitemap.xml`,
-        permanent: false,
-        basePath: false,
-      },
-      {
-        source: "/product-sitemap.xml",
-        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product-sitemap.xml`,
-        permanent: false,
-        basePath: false,
-      },
-      {
-        source: "/category-sitemap.xml",
-        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/category-sitemap.xml`,
-        permanent: false,
-        basePath: false,
-      },
-      {
-        source: "/product_taxonomy-sitemap.xml",
-        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_taxonomy-sitemap.xml`,
-        permanent: false,
-        basePath: false,
-      },
-      {
-        source: "/product_tag-sitemap.xml",
-        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_tag-sitemap.xml`,
-        permanent: false,
-        basePath: false,
-      },
-      {
-        source: "/product_brand-sitemap.xml",
-        destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_brand-sitemap.xml`,
-        permanent: false,
-        basePath: false,
-      },
-    ];
-  },
+  // async redirects(NEXT_PUBLIC_WORDPRESS_SITE_URL) {
+  //   return [
+  //     {
+  //       source: "/post-sitemap.xml",
+  //       destination:
+  //         "https://staging-petsmarketplace-staging.kinsta.cloud/post-sitemap.xml",
+  //       permanent: false,
+  //       basePath: false,
+  //     },
+  //     {
+  //       source: "/page-sitemap.xml",
+  //       destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/page-sitemap.xml`,
+  //       permanent: false,
+  //       basePath: false,
+  //     },
+  //     {
+  //       source: "/product-sitemap.xml",
+  //       destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product-sitemap.xml`,
+  //       permanent: false,
+  //       basePath: false,
+  //     },
+  //     {
+  //       source: "/category-sitemap.xml",
+  //       destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/category-sitemap.xml`,
+  //       permanent: false,
+  //       basePath: false,
+  //     },
+  //     {
+  //       source: "/product_taxonomy-sitemap.xml",
+  //       destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_taxonomy-sitemap.xml`,
+  //       permanent: false,
+  //       basePath: false,
+  //     },
+  //     {
+  //       source: "/product_tag-sitemap.xml",
+  //       destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_tag-sitemap.xml`,
+  //       permanent: false,
+  //       basePath: false,
+  //     },
+  //     {
+  //       source: "/product_brand-sitemap.xml",
+  //       destination: `${NEXT_PUBLIC_WORDPRESS_SITE_URL}/product_brand-sitemap.xml`,
+  //       permanent: false,
+  //       basePath: false,
+  //     },
+  //   ];
+  // },
   trailingSlash: false,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

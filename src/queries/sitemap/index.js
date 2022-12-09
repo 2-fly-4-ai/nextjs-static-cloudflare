@@ -4,17 +4,35 @@ import { HeaderFooter } from "../get-menus";
 import SeoFragment from "../fragments/seo";
 
 export const GET_URLS = gql`
-  query GET_PAGE {
+  query NewQuery {
     rankMathSettings {
       sitemap {
         sitemapIndexUrl
-        taxonomies {
-          sitemapUrl
-          isInSitemap
-        }
         contentTypes {
           sitemapUrl
           isInSitemap
+          connectedContentNodes(first: 100000) {
+            edges {
+              node {
+                link
+                seo {
+                  robots
+                }
+              }
+            }
+          }
+        }
+        taxonomies {
+          isInSitemap
+          sitemapUrl
+          connectedTerms(first: 100000) {
+            nodes {
+              link
+              seo {
+                robots
+              }
+            }
+          }
         }
       }
     }

@@ -1,4 +1,7 @@
-# petsmarketplc.com/robots.txt
+User-agent: Googlebot
+Disallow: /nogooglebot/
 
-[...]
-Sitemap: 
+User-agent: *
+Allow: /
+
+Sitemap: https://www.petsmarketplc.com
