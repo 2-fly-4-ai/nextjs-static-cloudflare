@@ -21,21 +21,6 @@ import BrandCategories from "../../../src/components/product_category/brand/bran
 import { PER_PAGE_FIRST } from "../../../src/utils/pagination";
 
 const Page = ({ data }) => {
-  const [isMenuVisible, setMenuVisibility] = useState(false);
-  const [activeId, setActiveId] = useState();
-
-  // const [open, setOpen] = React.useState(false);
-  function activeCategory(id) {
-    setActiveId(id);
-  }
-
-  function isActive(id) {
-    return id === activeId;
-  }
-
-  let page_tags = [];
-  let page_brands = [];
-
   return (
     <Layout data={data}>
       <section className="bg-white dark:bg-gray-900">
