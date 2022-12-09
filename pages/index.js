@@ -22,23 +22,29 @@ export default function Home({ data }) {
           <div className=" grid max-w-screen-2xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0  lg:py-16  xl:py-16  lg:grid-cols-12">
             <div className=" lg:col-span-6 w-full pr-10 flex flex-col my-auto">
               <div className="max-w-screen-xl  py-4 mr-auto text-center lg:py-4 lg:px-2">
-                <dl className="grid max-w-screen-md gap-2 sm:gap-8 mx-auto text-gray-900 grid-cols-3 dark:text-white">
+                <dl className="grid max-w-screen-md gap-2 sm:gap-4 mx-auto text-gray-900 grid-cols-3 dark:text-white">
                   <div className="rounded-lg lg:hover:-translate-y-2 duration-500 flex flex-col items-center justify-center bg-green-400 xl:p-3 p-1 shadow-lg">
-                    <dt className="mb-2 text-3xl md:text-4xl ">73M+</dt>
+                    <dt className="mb-2 text-3xl font-bold md:text-3xl ">
+                      1500+
+                    </dt>
                     <dd className="font-medium text-gray-900 dark:text-gray-400">
-                      developers
+                      Products
                     </dd>
                   </div>
                   <div className="rounded-lg lg:hover:-translate-y-2 duration-500 flex flex-col items-center justify-center bg-yellow-300 xl:p-3 p-1 shadow-lg">
-                    <dt className="mb-2 text-3xl md:text-4xl ">1B+</dt>
+                    <dt className="mb-2 text-3xl font-bold md:text-3xl ">
+                      250+
+                    </dt>
                     <dd className="font-medium  text-gray-900 dark:text-gray-400">
-                      contributors
+                      Brands
                     </dd>
                   </div>
                   <div className="rounded-lg lg:hover:-translate-y-2 duration-500 flex flex-col items-center justify-center bg-red-400 xl:p-3 p-1 shadow-lg">
-                    <dt className="mb-2 text-3xl md:text-4xl ">4M+</dt>
+                    <dt className="mb-2 text-3xl font-bold md:text-3xl ">
+                      100+
+                    </dt>
                     <dd className="font-medium text-gray-900 dark:text-gray-400">
-                      organizations
+                      Pet Articles
                     </dd>
                   </div>
                 </dl>

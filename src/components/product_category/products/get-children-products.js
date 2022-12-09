@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Image from "next/image";
 import { sanitize } from "../../../../src/utils/miscellaneous";
+import Link from "next/link";
 
 //No fucking idea how you deal with modals and what not with components
 // Also ask how to actually work with components and Console.warn() them as you are building them.
@@ -206,9 +207,9 @@ const Products = ({ data }) => {
                   </div>
                 </div>
                 <h5 className="py-3 text px-2 tracking-tight text-gray-900 font-semibold dark:text-white uppercase hover:text-blue-500">
-                  <a href={product?.uri}>
+                  <Link href={product?.uri}>
                     {product?.title.split(" ").slice(0, 8).join(" ")}
-                  </a>
+                  </Link>
                 </h5>
               </div>
             );
