@@ -65,7 +65,7 @@ export default function ChildTags({ data }) {
   return (
     <div className="space-x-2 mt-2 flex flex-col">
       <span className="text-gray-800 mx-2 my-4 text-left font-semibold">
-        Tags:{" "}
+        Related Tags:{" "}
       </span>
       <div>
         <ul className="flex flex-wrap align items-start gap-1 p-2">

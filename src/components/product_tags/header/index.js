@@ -24,7 +24,7 @@ export default function ProductTagsHeader({ data }) {
           />
         ) : null}
 
-        <p className="text-gray-600 font-medium m-5">
+        <p className="text-gray-600 font-medium m-5 flex flex-wrap gap-2">
           {!isEmpty(
             data?.page?.products?.nodes[0]?.productTaxonomies?.nodes[0].parent
               ?.node?.parent?.node?.parent?.node?.name
