@@ -64,12 +64,12 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
                   if (!isCustomPageUri(menu?.node?.path)) {
                     return (
                       <Link key={menu?.node.id} href={menu?.node?.path}>
-                        <div
+                        <a
                           className="block mt-4 text-base font-medium lg:inline-block lg:mt-0 text-white hover:text-blue-400 mr-4"
                           data-cy="nav-item"
                         >
                           {menu?.node?.label}
-                        </div>
+                        </a>
                       </Link>
                     );
                   }
