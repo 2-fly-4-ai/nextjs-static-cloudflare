@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Image from "next/image";
 import { sanitize } from "../../../../src/utils/miscellaneous";
+import Link from "next/link";
 
 //No fucking idea how you deal with modals and what not with components
 // Also ask how to actually work with components and Console.warn() them as you are building them.
