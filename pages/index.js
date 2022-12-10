@@ -266,11 +266,12 @@ export default function Home({ data }) {
               {!isEmpty(data?.productTaxonomies?.nodes)
                 ? data?.productTaxonomies?.nodes.map((tag) => {
                     return (
-                      <Link href={tag.uri} className="cursor-pointer">
-                        <div
-                          key={tag.name}
-                          className="p-3 pb-3 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
-                        >
+                      <Link
+                        href={tag.uri}
+                        className="cursor-pointer"
+                        key={tag.name}
+                      >
+                        <div className="p-3 pb-3 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
                           {!isEmpty(
                             tag.products?.nodes[0]?.single_product_acf
                               ?.productImageMainUrl
