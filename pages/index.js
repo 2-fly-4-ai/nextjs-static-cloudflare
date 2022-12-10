@@ -21,10 +21,10 @@ export default function Home({ data }) {
         <section className="bg-white dark:bg-gray-900 ">
           <div className=" grid max-w-screen-2xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0  lg:py-16  xl:py-16  lg:grid-cols-12">
             <div className=" lg:col-span-6 w-full pr-10 flex flex-col my-auto">
-              <div className="max-w-screen-xl  py-4 mr-auto text-center lg:py-4 lg:px-2">
+              <div className="max-w-screen-xl  py-4 mr-auto text-center lg:py-4 lg:px-2 select-none">
                 <dl className="grid max-w-screen-md gap-2 sm:gap-4 mx-auto text-gray-900 grid-cols-3 dark:text-white">
                   <div className="rounded-lg lg:hover:-translate-y-2 duration-500 flex flex-col items-center justify-center bg-green-400 xl:p-3 p-1 shadow-lg">
-                    <dt className="mb-2 text-3xl font-bold md:text-3xl ">
+                    <dt className="text-3xl font-bold text-gray-900 md:text-3xl">
                       1500+
                     </dt>
                     <dd className="font-medium text-gray-900 dark:text-gray-400">
@@ -32,7 +32,7 @@ export default function Home({ data }) {
                     </dd>
                   </div>
                   <div className="rounded-lg lg:hover:-translate-y-2 duration-500 flex flex-col items-center justify-center bg-yellow-300 xl:p-3 p-1 shadow-lg">
-                    <dt className="mb-2 text-3xl font-bold md:text-3xl ">
+                    <dt className="text-3xl font-bold md:text-3xl text-gray-900">
                       250+
                     </dt>
                     <dd className="font-medium  text-gray-900 dark:text-gray-400">
@@ -40,7 +40,7 @@ export default function Home({ data }) {
                     </dd>
                   </div>
                   <div className="rounded-lg lg:hover:-translate-y-2 duration-500 flex flex-col items-center justify-center bg-red-400 xl:p-3 p-1 shadow-lg">
-                    <dt className="mb-2 text-3xl font-bold md:text-3xl ">
+                    <dt className=" text-3xl font-bold md:text-3xl text-gray-900">
                       100+
                     </dt>
                     <dd className="font-medium text-gray-900 dark:text-gray-400">
@@ -52,19 +52,16 @@ export default function Home({ data }) {
               <h1 className="w-full mb-4 text-4xl  tracking-tight leading-none md:text-5xl lg:text-4xl 2xl:text-6xl dark:text-white">
                 {data?.header?.siteTagLine}
               </h1>
-              <p className="max-w-xl mb-6  text-gray-600 lg:mb-4 md:text-lg lg:text-lg dark:text-gray-400">
-                From checkout to global sales tax compliance, companies around
-                the world use Flowbite to simplify their payment stack. From
-                checkout to global sales tax compliance, companies around the
-                world use Flowbite to simplify their payment stack.
+              <p className="max-w-xl mb-6  text-gray-600 lg:mb-4 md:text-lg lg:text-xl dark:text-gray-400">
+                At PetsMarket Place, we understand how important your furry
+                friends are to you. That's why we're dedicated to providing the
+                best selections of pet products and accessories on the market,
+                from toys and treats to grooming supplies and health products.
               </p>
 
-              <Link
-                href="/shop/category/pet-supplies"
-                className="inline-flex rounded-full items-center justify-center px-5 mr-auto py-3 text-lg font-medium text-center text-gray-700 border border-gray-600  hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-              >
-                Go to shop
-              </Link>
+              <btn className="inline-flex rounded-full items-center justify-center px-5 mr-auto py-3 text-lg font-medium text-center text-gray-700 border-4 border-gray-300   focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800  hover:bg-gray-100 hover:text-blue-700">
+                <Link href="/shop/category/pet-supplies">Go To Shop</Link>
+              </btn>
             </div>
 
             <div className=" lg:col-span-6 justify-center flex xl:flex 2xl:h-full  max-h-almost-screen">
@@ -216,27 +213,27 @@ export default function Home({ data }) {
                 Best Picks
               </h2>
             </div>
-            <div className="grid gap-8 mb-16  lg:grid-cols-5">
+            <div className="grid gap-6 mb-16  lg:grid-cols-5">
               {!isEmpty(data?.productTags?.nodes)
                 ? data?.productTags?.nodes.map((tag) => {
                     return (
                       <article
                         key={tag.name}
-                        className="border-2 p-2  justify-center content-center flex-col flex"
+                        className="border-2 p-3  justify-center content-center flex-col flex"
                       >
                         <h2 className="my-1 text-2xl  text-center tracking-tight text-gray-900 dark:text-white capitalize">
                           <Link href={tag?.uri}>{tag?.name}</Link>
                         </h2>
                         <div
-                          className="prose-headings:font-normal text-center prose-h3:text-sm text-gray-500 my-2 max-w-none"
+                          className="prose-headings:font-normal text-center prose-h3:text-sm text-gray-500 my-2 mb-4 max-w-none select-none"
                           dangerouslySetInnerHTML={{
                             __html: sanitize(tag?.roundupFields?.hero),
                           }}
                         />
 
                         <Link href={tag?.uri}>
-                          <div className="py-1.5 mt-auto mb-1 uppercase px-7 justify-center text-sm font-medium text-gray-700 bg-white rounded-full border-2 border-gray-200 hover:bg-gray-100 hover:text-blue-700  focus:outline-none  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">
-                            <a className="select-none">Read more</a>
+                          <div className="py-2 cursor-pointer mt-auto my-1 uppercase px-7 justify-center text-sm font-medium text-gray-700 bg-white rounded-full border-2 border-gray-200 hover:bg-gray-100 hover:text-blue-700  focus:outline-none  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">
+                            <a className="select-none ">Read more</a>
                             <svg
                               className="ml-2 w-4 h-4"
                               fill="currentColor"
@@ -260,16 +257,19 @@ export default function Home({ data }) {
         </section>
         {/* Product box one */}
         <section className="bg-gradient-to-tq  dark:bg-gray-900 max-w-screen-2xl 2xl:px-5 mx-auto">
-          <div className="py-8 px-4 mx-auto max-w-screen-2xl lg:py-6 lg:pb-2 lg:px-2 border-yellow-200 border-8">
+          <h2 className="mb-6 text-4xl tracking-tight text-gray-800 dark:text-white">
+            Product Categories
+          </h2>
+          <div className="py-8 px-4 mx-auto max-w-screen-2xl lg:py-6 lg:pb-2 lg:px-2">
             <div className="grid gap-6 lg:gap-0  md:grid-cols-3 lg:grid-cols-6 sm:grid-cols-2 justify-center">
               {!isEmpty(data?.productTaxonomies?.nodes)
                 ? data?.productTaxonomies?.nodes.map((tag) => {
                     return (
-                      <div
-                        key={tag.name}
-                        className="p-3 pb-3 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700"
-                      >
-                        <Link href={tag.uri}>
+                      <Link href={tag.uri} className="cursor-pointer">
+                        <div
+                          key={tag.name}
+                          className="p-3 pb-3 max-w-sm bg-white rounded-none  dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
+                        >
                           {!isEmpty(
                             tag.products?.nodes[0]?.single_product_acf
                               ?.productImageMainUrl
@@ -281,18 +281,18 @@ export default function Home({ data }) {
                                     ?.productImageMainUrl
                                 }
                                 className="m-auto h-56 lg:h-44 2xl:max-h-72"
-                                width={200}
-                                height={200}
+                                width={250}
+                                height={250}
                                 objectFit="contain"
                                 alt={tag?.name}
                               />
-                              <h5 className=" py-3 px-2 font-medium tracking-tight text-gray-900 dark:text-white text-center">
+                              <h5 className=" py-3 px-2 font-medium tracking-tight text-gray-900 dark:text-white text-center   hover:text-blue-700">
                                 {tag?.name}
                               </h5>
                             </div>
                           ) : null}
-                        </Link>
-                      </div>
+                        </div>
+                      </Link>
                     );
                   })
                 : null}
@@ -335,40 +335,41 @@ export default function Home({ data }) {
 
         <section className="bg-white dark:bg-gray-900 ">
           <div className="grid gap-16 py-8 px-6 mx-auto max-w-screen-2xl lg:grid-cols-2 lg:py-16 lg:px-6">
-            <div className="text-gray-700 sm:text-lg dark:text-gray-400">
+            <div className="text-gray-700 sm:text-lg dark:text-gray-400 select-none">
               <h2 className="mb-4 text-4xl tracking-tight  text-gray-900 dark:text-white">
                 We share your deep love for animals
               </h2>
               <p className="mb-2 md:text-lg text-gray-700">
-                At our website, we are dedicated to providing high-quality
-                animal products for all of your furry friends. You can trust
-                that every product we offer has been carefully selected and
-                reviewed by experts in the field. We offer a wide variety of
-                products from trusted and reputable brands, and we are
-                constantly updating our selection to provide the latest and
-                greatest in pet care.
+                Welcome to PetsMarket Place, the premier online destination for
+                all your pet-related needs. Whether you're a proud pet owner or
+                simply an animal lover, you'll find everything you need right
+                here in one convenient place.
               </p>
               <p className=" md:text-lg mb-2  text-gray-700">
-                Our knowledgeable and friendly staff are always on hand to
-                answer any questions you may have and to help you find the
-                perfect products for your pets. In addition to our wide range of
-                products, we also provide helpful information and resources on
-                pet care and nutrition, so you can make informed decisions for
-                your pets.
+                But PetsMarket Place is more than just a pet store. We're also a
+                trusted source of expert animal advice and information. Our team
+                of dedicated professionals is always on hand to provide you with
+                the knowledge and support you need to make informed decisions
+                about your pets' health and well-being. Whether you're looking
+                for advice on nutrition, training, or medical care, we're here
+                to help.
               </p>
 
               <p className=" md:text-lg mt-2 text-gray-700">
-                We are dedicated to promoting the well-being of animals, and a
-                portion of all of our profits goes towards research and
-                expanding access to useful pet information. Thank you for
-                choosing our website for all of your animal product needs. As an
-                customer, you can trust that you are getting the best products
-                at the best prices, and you are supporting a company that is
-                committed to animal welfare.
+                So whether you're shopping for your pets or seeking expert
+                advice, we invite you to explore the many resources and products
+                available at PetsMarket Place. We're confident you'll find
+                everything you need to keep your furry friends happy and
+                healthy. <br />
+                <br />
+                <span className="text-xl">
+                  Thanks for choosing PetsMarket Place - your one-stop shop for
+                  all your pet needs and expert animal advice.
+                </span>
               </p>
             </div>
             <div className="divide-y divide-gray-200 dark:divide-gray-700">
-              <div className="flex flex-col items-center pb-8 sm:flex-row">
+              <div className="flex flex-col items-center pb-8 sm:flex-row select-none">
                 <Image
                   className="mx-auto mb-4 w-36 h-36 rounded-full sm:ml-0 sm:mr-6"
                   src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=717&q=80"

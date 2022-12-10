@@ -78,10 +78,9 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
             ) : null}
             {/* social-icons */}
             <div className="mr-5">
-              <span className="mr-0 ml-2 w-px h-5 bg-gray-200 dark:bg-gray-600 lg:inline lg:mr-3 lg:ml-3"></span>
               <a
                 href={footer?.socialLinks[0]?.iconUrl}
-                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600"
+                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600 cursor-pointer"
               >
                 <svg
                   className="w-4 h-4"
@@ -95,7 +94,7 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
 
               <a
                 href={footer?.socialLinks[1]?.iconUrl}
-                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600"
+                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600 cursor-pointer"
               >
                 <svg
                   className="w-4 h-4"
@@ -108,7 +107,7 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
               </a>
               <a
                 href={footer?.socialLinks[2]?.iconUrl}
-                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600"
+                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600 cursor-pointer"
               >
                 <svg
                   className="w-4 h-4"
@@ -121,7 +120,7 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
               </a>
               <a
                 href={footer?.socialLinks[3]?.iconUrl}
-                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600"
+                className="inline-flex items-center p-2 text-sm font-medium text-white  rounded-none dark:text-gray-400 hover:bg-green-400 dark:hover:bg-gray-600 cursor-pointer"
               >
                 <svg
                   className="w-4 h-4"

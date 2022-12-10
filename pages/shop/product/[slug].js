@@ -61,7 +61,7 @@ const Post = ({ data }) => {
       {/* The whole page */}
       <div className="px-6 py-4 flex-col">
         {/* Top-box-Whole */}
-        <div className="container flex flex-col lg:flex-row gap-10 mx-auto">
+        <div className="container flex flex-col lg:flex-row gap-5 mx-auto">
           {/* Top-box-left */}
           <div className="">
             <div className="container pt-4 pb-8 flex items-center">
@@ -73,7 +73,7 @@ const Post = ({ data }) => {
               </span>
 
               {/* BreadCrumb */}
-              <p className="text-gray-600 pt-2 font-medium hidden">
+              <p className="text-gray-600 pt-2 font-medium hidden md:flex">
                 {!isEmpty(
                   data?.post?.productTaxonomies?.nodes[0]?.parent?.node?.parent
                     ?.node?.parent?.node?.name
@@ -142,8 +142,8 @@ const Post = ({ data }) => {
               src={data?.post?.single_product_acf?.productImageMainUrl}
               alt="product"
               className="max-h-96"
-              height="600"
-              width="600"
+              height="500"
+              width="500"
             />
             <div className="grid grid-cols-5 gap-4 mt-4">
               {data?.post?.single_product_acf?.productImageGalleryUrls
@@ -217,16 +217,16 @@ const Post = ({ data }) => {
 
                 {data?.post?.productBrands?.nodes[0]?.seo?.robots[1] ==
                 "index" ? (
-                  <a
+                  <Link
                     href={data?.post?.productBrands?.nodes[0]?.uri}
                     className="text-gray-600 border text-sm border-gray-500 rounded-full px-4  py-1 pb-1.5"
                   >
                     {data?.post?.productBrands?.nodes[0]?.name}
-                  </a>
+                  </Link>
                 ) : (
-                  <a className="text-gray-600 border text-sm border-gray-500 rounded-full px-4  py-1 pb-1.5">
+                  <Link className="text-gray-600 border text-sm border-gray-500 rounded-full px-4  py-1 pb-1.5">
                     {data?.post?.productBrands?.nodes[0]?.name}
-                  </a>
+                  </Link>
                 )}
               </p>
 
@@ -899,7 +899,7 @@ const Post = ({ data }) => {
             {uniqueNames.map((product) => {
               return (
                 <div
-                  className="bg-white shadow rounded overflow-hidden group md:w-64"
+                  className="bg-white shadow rounded overflow-hidden group md:w-60"
                   key={product?.title}
                 >
                   <div className="relative">

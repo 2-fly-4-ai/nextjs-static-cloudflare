@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://www.petsmarketplc.com
+Sitemap: https://www.petsmarketplc.com/sitemap-index.xml
