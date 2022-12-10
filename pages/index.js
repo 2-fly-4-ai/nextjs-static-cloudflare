@@ -54,9 +54,10 @@ export default function Home({ data }) {
               </h1>
               <p className="max-w-xl mb-6  text-gray-600 lg:mb-4 md:text-lg lg:text-xl dark:text-gray-400">
                 At PetsMarket Place, we understand how important your furry
-                friends are to you. That's why we're dedicated to providing the
-                best selections of pet products and accessories on the market,
-                from toys and treats to grooming supplies and health products.
+                friends are to you. That&apos;s why we&apos;re dedicated to
+                providing the best selections of pet products and accessories on
+                the market, from toys and treats to grooming supplies and health
+                products.
               </p>
 
               <btn className="inline-flex rounded-full items-center justify-center px-5 mr-auto py-3 text-lg font-medium text-center text-gray-700 border-4 border-gray-300   focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800  hover:bg-gray-100 hover:text-blue-700">
@@ -341,25 +342,25 @@ export default function Home({ data }) {
               </h2>
               <p className="mb-2 md:text-lg text-gray-700">
                 Welcome to PetsMarket Place, the premier online destination for
-                all your pet-related needs. Whether you're a proud pet owner or
-                simply an animal lover, you'll find everything you need right
-                here in one convenient place.
+                all your pet-related needs. Whether you&apos;re a proud pet
+                owner or simply an animal lover, you&apos;ll find everything you
+                need right here in one convenient place.
               </p>
               <p className=" md:text-lg mb-2  text-gray-700">
-                But PetsMarket Place is more than just a pet store. We're also a
-                trusted source of expert animal advice and information. Our team
-                of dedicated professionals is always on hand to provide you with
-                the knowledge and support you need to make informed decisions
-                about your pets' health and well-being. Whether you're looking
-                for advice on nutrition, training, or medical care, we're here
-                to help.
+                But PetsMarket Place is more than just a pet store. We&apos;re
+                also a trusted source of expert animal advice and information.
+                Our team of dedicated professionals is always on hand to provide
+                you with the knowledge and support you need to make informed
+                decisions about your pets&apos; health and well-being. Whether
+                you&apos;re looking for advice on nutrition, training, or
+                medical care, we&apos;re here to help.
               </p>
 
               <p className=" md:text-lg mt-2 text-gray-700">
-                So whether you're shopping for your pets or seeking expert
+                So whether you&apos;re shopping for your pets or seeking expert
                 advice, we invite you to explore the many resources and products
-                available at PetsMarket Place. We're confident you'll find
-                everything you need to keep your furry friends happy and
+                available at PetsMarket Place. We&apos;re confident you&apos;ll
+                find everything you need to keep your furry friends happy and
                 healthy. <br />
                 <br />
                 <span className="text-xl">
