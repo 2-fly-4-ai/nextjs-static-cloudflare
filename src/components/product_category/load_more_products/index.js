@@ -74,7 +74,11 @@ const LoadMorePosts = ({
 
     // If its a search query then add the query in the query variables.
     if (!isEmpty(searchQuery)) {
-      queryVariables.query = searchQuery;
+      queryVariables = {
+        first: PER_PAGE_FIRST, //first: PER_PAGE_FIRST,
+        after: endCursor,
+        query: searchQuery,
+      };
     }
 
     fetchPosts({

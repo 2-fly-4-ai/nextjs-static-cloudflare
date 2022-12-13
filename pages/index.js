@@ -258,10 +258,12 @@ export default function Home({ data }) {
         </section>
         {/* Product box one */}
         <section className="bg-gradient-to-tq  dark:bg-gray-900 max-w-screen-2xl 2xl:px-5 mx-auto">
-          <h2 className="mb-6 text-4xl tracking-tight text-gray-800 dark:text-white">
-            Product Categories
-          </h2>
           <div className="py-8 px-4 mx-auto max-w-screen-2xl lg:py-6 lg:pb-2 lg:px-2">
+            <div className="mx-auto max-w-screen-2xl text-left">
+              <h2 className="mb-6 text-4xl tracking-tight text-gray-800 dark:text-white">
+                Product Categories
+              </h2>
+            </div>
             <div className="grid gap-6 lg:gap-0  md:grid-cols-3 lg:grid-cols-6 sm:grid-cols-2 justify-center">
               {!isEmpty(data?.productTaxonomies?.nodes)
                 ? data?.productTaxonomies?.nodes.map((tag) => {

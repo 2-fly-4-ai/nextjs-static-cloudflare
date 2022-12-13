@@ -6,7 +6,7 @@ import SeoFragment from "../fragments/seo";
 export const GET_PAGE = gql`
 query GET_PAGE($uri: [String], $first: Int!, $after: String) {
 	${HeaderFooter}
-	brands: productBrands(where: {orderby: COUNT}, last: 100) {
+	brands: productBrands(where: {orderby: COUNT}, last: 60) {
 		nodes {
 		  name
 		  uri

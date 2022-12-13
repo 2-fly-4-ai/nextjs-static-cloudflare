@@ -9,11 +9,11 @@ import { GET_MENUS } from "../src/queries/get-menus";
 import Header from "../src/components/layout/header";
 import Footer from "../src/components/layout/footer";
 import SearchBox from "../src/components/search/search-box";
-import LoadMorePosts from "../src/components/news/load-more-posts";
+import LoadMorePosts from "../src/components/news/load-more-products";
 import {
   GET_SEARCH_RESULTS,
   GET_SEARCH_RESULTS_WITH_TOTAL_PAGES,
-} from "../src/queries/search/get-search-results";
+} from "../src/queries/search/get-search-results-product";
 import ErrorMessage from "../src/components/error";
 import Loading from "../src/components/loading";
 import { PER_PAGE_FIRST } from "../src/utils/pagination";
@@ -25,7 +25,6 @@ export default function Search({ data }) {
     header,
     footer,
     headerMenus,
-    footerMenus,
     footerMenus1,
     footerMenus2,
     footerMenus3,
@@ -42,6 +41,7 @@ export default function Search({ data }) {
     {
       notifyOnNetworkStatusChange: true,
       onCompleted: (data) => {
+        console.warn(data);
         setQueryResultPosts(data?.posts ?? {});
         setShowResultInfo(true);
       },
@@ -72,23 +72,26 @@ export default function Search({ data }) {
     });
   };
 
-  useEffect(() => {
-    /**
-     * If the query params is set, set the searchQuery in the in
-     * 1. Set the search input value to that query.
-     * 2. Call fetchPosts to get the results as per the query string from query params.
-     */
-    if (searchQueryString) {
-      setSearchQuery(searchQueryString);
-      fetchPosts({
-        variables: {
-          first: PER_PAGE_FIRST,
-          after: null,
-          query: searchQueryString,
-        },
-      });
-    }
-  }, [searchQueryString]);
+  useEffect(
+    (fetchPosts) => {
+      /**
+       * If the query params is set, set the searchQuery in the in
+       * 1. Set the search input value to that query.
+       * 2. Call fetchPosts to get the results as per the query string from query params.
+       */
+      if (searchQueryString) {
+        setSearchQuery(searchQueryString);
+        fetchPosts({
+          variables: {
+            first: PER_PAGE_FIRST,
+            after: null,
+            query: searchQueryString,
+          },
+        });
+      }
+    },
+    [searchQueryString]
+  );
 
   const totalPostResultCount =
     queryResultPosts?.pageInfo?.offsetPagination?.total;
@@ -121,12 +124,11 @@ export default function Search({ data }) {
           posts={queryResultPosts}
           graphQLQuery={GET_SEARCH_RESULTS}
           searchQuery={searchQuery}
-          classes="md:container px-5 py-12 mx-auto min-h-almost-screen"
+          classes=""
         />
       </div>
       <Footer
         footer={footer}
-        footerMenus={footerMenus?.edges ?? []}
         footerMenus1={footerMenus1?.edges}
         footerMenus2={footerMenus2?.edges}
         footerMenus3={footerMenus3?.edges}

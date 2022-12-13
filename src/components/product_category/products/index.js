@@ -158,11 +158,12 @@ const Products = ({ product }) => {
                     </div>
                   </div>
                 </div>
-                <h5 className="py-3 text px-2 max-w- tracking-tight text-gray-900 font-semibold dark:text-white uppercase hover:text-blue-500">
+
+                <h3 className="py-3 text px-2 max-w- tracking-tight text-gray-900 font-semibold dark:text-white uppercase hover:text-blue-500 break-all">
                   <Link href={product?.uri}>
                     {product?.title.split(" ").slice(0, 8).join(" ")}
                   </Link>
-                </h5>
+                </h3>
               </div>
             );
           })}

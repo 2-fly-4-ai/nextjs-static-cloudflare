@@ -9,11 +9,11 @@ import { GET_MENUS } from "../src/queries/get-menus";
 import Header from "../src/components/layout/header";
 import Footer from "../src/components/layout/footer";
 import SearchBox from "../src/components/search/search-box";
-import LoadMorePosts from "../src/components/news/load-more-posts";
+import LoadMorePosts from "../src/components/news/load-more-products";
 import {
   GET_SEARCH_RESULTS,
   GET_SEARCH_RESULTS_WITH_TOTAL_PAGES,
-} from "../src/queries/search/get-search-results";
+} from "../src/queries/search/get-search-results-product";
 import ErrorMessage from "../src/components/error";
 import Loading from "../src/components/loading";
 import { PER_PAGE_FIRST } from "../src/utils/pagination";

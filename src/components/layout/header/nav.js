@@ -17,22 +17,22 @@ const Nav = ({ footer, header, headerMenus, slug }) => {
       <nav className="flex items-center justify-between flex-wrap bg-gradient-to-r from-green-700 to-green-400 p-6 overflow-hidden">
         <div className="max-w-screen-2xl w-full mx-auto flex flex-col sm:flex-row">
           <div className="flex flex-row items-center  flex-shrink-0 text-white mr-6">
-            <div className="mr-2">
-              <Link href="/">
-                <Image
-                  src={header?.siteLogoUrl ?? ""}
-                  alt=""
-                  width="48"
-                  height="48"
-                />
-              </Link>
-            </div>
             <Link href="/">
-              <div className="flex flex-col items-start justify-start">
-                <span className="font-semibold text-xl tracking-tight">
-                  {header?.siteTitle}
-                </span>
-                <span>{header?.siteTagLine}</span>
+              <div className="flex cursor-pointer">
+                <div className="mr-2 ">
+                  <Image
+                    src={header?.siteLogoUrl ?? ""}
+                    alt=""
+                    width="48"
+                    height="48"
+                  />
+                </div>
+                <div className="flex flex-col items-start justify-start">
+                  <span className="font-semibold text-xl tracking-tight">
+                    {header?.siteTitle}
+                  </span>
+                  <span>{header?.siteTagLine}</span>
+                </div>
               </div>
             </Link>
             <div className="block ml-auto mr-2 lg:hidden">

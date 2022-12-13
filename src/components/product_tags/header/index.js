@@ -17,14 +17,14 @@ export default function ProductTagsHeader({ data }) {
 
         {!isEmpty(data?.page?.roundupFields?.hero) ? (
           <div
-            className="mx-auto my-6  max-w-2xl text-2xl dark:text-white font-extrabold leading-none text-gray-900 sm:text-3xl lg:text-4xl"
+            className="mx-auto my-6 max-w-2xl text-2xl dark:text-white font-extrabold leading-none text-gray-900 sm:text-3xl lg:text-4xl"
             dangerouslySetInnerHTML={{
               __html: sanitize(data?.page?.roundupFields?.hero ?? {}),
             }}
           />
         ) : null}
 
-        <p className="text-gray-600 font-medium m-5 flex flex-wrap gap-2">
+        <p className="text-gray-600 font-medium m-5 content-center  justify-center flex flex-wrap gap-2">
           {!isEmpty(
             data?.page?.products?.nodes[0]?.productTaxonomies?.nodes[0].parent
               ?.node?.parent?.node?.parent?.node?.name

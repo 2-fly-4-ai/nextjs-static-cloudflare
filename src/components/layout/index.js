@@ -18,6 +18,7 @@ const Layout = ({ data, isPost, children }) => {
     footerMenus1,
     footerMenus2,
     footerMenus3,
+    footerMenus4,
   } = data || {};
 
   // if (isEmpty(page) && isEmpty(post) && isEmpty(posts)) {
@@ -47,7 +48,6 @@ const Layout = ({ data, isPost, children }) => {
         footerMenus1={footerMenus1?.edges}
         footerMenus2={footerMenus2?.edges}
         footerMenus3={footerMenus3?.edges}
-        footerMenus4={footerMenus3?.edges}
       />
     </div>
   );
