@@ -48,7 +48,10 @@ const Category = ({ data }) => {
           {data?.productTaxonomies?.nodes.map((tax) => {
             return tax?.children?.nodes.map((tax) => {
               return (
-                <div className="flex flex-col content-start items-start w-full border bg-white shadow-lg">
+                <div
+                  key={tax.name}
+                  className="flex flex-col content-start items-start w-full border bg-white shadow-lg"
+                >
                   <div className="max-w-screen-2xl border-b w-full flex content-start p-6">
                     <h2 className="text-3xl tracking-tight text-gray-800 dark:text-white  hover:text-blue-700">
                       <a href={tax?.uri}>{tax?.name}</a>
@@ -58,7 +61,7 @@ const Category = ({ data }) => {
                     <div className="grid gap-10 lg:gap-6 lg:grid-cols-1 sm:grid-cols-2">
                       {tax?.children?.nodes?.map((tax) => {
                         return (
-                          <div>
+                          <div key={tax.name}>
                             <Link
                               key={tax?.name}
                               href={tax?.uri}
@@ -85,17 +88,6 @@ const Category = ({ data }) => {
                           </div>
                         );
                       })}
-
-                      {/* <div>
-                        {!isEmpty(tax?.children?.nodes)
-                          ? tax?.children?.nodes?.map((tax) => {
-                              return tax?.children?.nodes?.map((tax) => {
-                                console.log(tax);
-                                return <div key={tax?.name}>{tax?.name}</div>;
-                              });
-                            })
-                          : null}
-                      </div> */}
                     </div>
                   </div>
                 </div>
