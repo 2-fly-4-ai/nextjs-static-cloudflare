@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "../../image";
 import { sanitize } from "../../../utils/miscellaneous";
 import { isEmpty } from "lodash";
-import Image from "next/image";
 
 const Post = ({ post }) => {
   console.log({ post });
