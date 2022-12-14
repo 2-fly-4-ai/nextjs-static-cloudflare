@@ -17,7 +17,7 @@ const Post = ({ post }) => {
           />
         ) : null}
       </div> */}
-      <Link href={`${post?.uri}`}>
+      <Link href={`blog/${post?.slug}`}>
         <a>
           <h2
             className="my-1 text-2xl  tracking-tight text-gray-900 dark:text-white hover:text-blue-700"
@@ -26,7 +26,7 @@ const Post = ({ post }) => {
         </a>
       </Link>
       <div
-        className="mb-4  text-gray-700 dark:text-gray-400 prose "
+        className="mb-4  text-gray-700 dark:text-gray-400 prose prose-a:text-white"
         dangerouslySetInnerHTML={{ __html: sanitize(post?.excerpt ?? "") }}
       />
     </div>

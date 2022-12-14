@@ -31,7 +31,7 @@ const Post = ({ data }) => {
       <main className="pb-16 lg:pb-24 bg-white dark:bg-gray-900 px-4 ">
         <div className="flex relative z-20 gap-6 justify-between px-4 mx-auto max-w-screen-xl  bg-white dark:bg-gray-900 rounded">
           <article className="w-full max-w-none htmlFormat htmlFormat-sm sm:format-base lg:format-lg htmlFormat-blue dark:format-invert">
-            <header className="py-12 bg-gradient-to-r from-gray-100 to-gray-300 mt-4 h-72">
+            <header className="py-12 bg-gradient-to-r from-gray-100 to-gray-300 mt-4 h-max">
               <div className="px-4 mx-auto w-full max-w-screen-xl text-center">
                 <span className="block mb-4 font-semibold text-gray-900 dark:text-white">
                   Published{" "}
