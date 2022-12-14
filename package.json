@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "svg": "svgr -d src/components/icons src/components/icons/svgs",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run --browser chrome"
+    "svg": "svgr -d src/components/icons src/components/icons/svgs"
   },
   "dependencies": {
     "@apollo/client": "^3.7.0",
