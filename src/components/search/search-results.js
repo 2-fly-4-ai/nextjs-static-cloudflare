@@ -11,9 +11,6 @@ const SearchResults = ({ searchQuery, setSearchQuery }) => {
         </h2>
         <div className="flex w-full justify-center">
           <div className="block relative w-4/5">
-            <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
-              <SearchIcon className="h-4 w-4 fill-current text-gray-500" />
-            </span>
             <input
               placeholder="Search..."
               value={searchQuery}
