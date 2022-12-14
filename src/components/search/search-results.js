@@ -7,7 +7,7 @@ const SearchResults = ({ searchQuery, setSearchQuery }) => {
         <br />
         <h2 className="text-center text-white py-4">
           {" "}
-          7 products found for: "product"
+          7 products found for: &quot;product&quot;
         </h2>
         <div className="flex w-full justify-center">
           <div className="block relative w-4/5">
