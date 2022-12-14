@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "../../image";
 import { sanitize } from "../../../utils/miscellaneous";
 import { isEmpty } from "lodash";
+import Image from "next/image";
 
 const Post = ({ post }) => {
   console.log({ post });
@@ -9,7 +10,7 @@ const Post = ({ post }) => {
     <div className="mb-8 ">
       <div>
         {!isEmpty(post?.single_product_acf?.productImageMainUrl) ? (
-          <img
+          <Image
             src={post?.single_product_acf?.productImageMainUrl}
             height="256"
             width="256"
