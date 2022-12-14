@@ -7,7 +7,7 @@ const Post = ({ post }) => {
   console.log({ post });
   return (
     <div className="mb-8 ">
-      <div>
+      {/* <div>
         {!isEmpty(post?.single_product_acf?.productImageMainUrl) ? (
           <Image
             src={post?.single_product_acf?.productImageMainUrl}
@@ -16,7 +16,7 @@ const Post = ({ post }) => {
             objectFit="contain"
           />
         ) : null}
-      </div>
+      </div> */}
       <Link href={`${post?.uri}`}>
         <a>
           <h2
