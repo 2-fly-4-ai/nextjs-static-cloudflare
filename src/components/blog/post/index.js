@@ -26,7 +26,7 @@ const Post = ({ post }) => {
         </a>
       </Link>
       <div
-        className="mb-4  text-gray-700 dark:text-gray-400 prose prose-a:text-white"
+        className="mb-4  text-gray-700 dark:text-gray-400 prose prose-a:text-blue-600"
         dangerouslySetInnerHTML={{ __html: sanitize(post?.excerpt ?? "") }}
       />
     </div>
