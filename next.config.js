@@ -7,7 +7,7 @@ module.exports = {
   experimental: {
     runtime: "experimental-edge",
   },
-  swcMinify: true,
+
   // async redirects(NEXT_PUBLIC_WORDPRESS_SITE_URL) {
   //   return [
   //     {
