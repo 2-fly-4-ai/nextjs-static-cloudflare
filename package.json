@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next-dev-https --https --qr --port 3000",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "svg": "svgr -d src/components/icons src/components/icons/svgs"
+    "svg": "svgr -d src/components/icons src/components/icons/svgs",
+    "precommit": "npm run lint:fix && npm run build"
   },
   "dependencies": {
     "@apollo/client": "^3.7.0",
