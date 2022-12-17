@@ -363,27 +363,6 @@ export async function getStaticProps({ params }) {
  * data is already present, unlike getInitialProps which gets the page at build time but makes an api
  * call after page is served on the browser.
  *
- * @see https://nextjs.org/docs/basic-features/data-fetching#the-paths-key-required
- *
- * @returns {Promise<{paths: [], fallback: boolean}>}
- */
-export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: GET_POST_SLUGS,
-  });
 
-  const pathsData = [];
 
-  data?.posts?.nodes &&
-    data?.posts?.nodes.map((post) => {
-      if (!isEmpty(post?.uri)) {
-        const slugs = post?.uri?.split("/").filter((pageSlug) => pageSlug);
-        pathsData.push({ params: { slug: slugs } });
-      }
-    });
 
-  return {
-    paths: pathsData,
-    fallback: FALLBACK,
-  };
-}
